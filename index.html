@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="id"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#1d6b75"><link rel="manifest" href="manifest.json"><link rel="icon" href="icon.svg">
+<title>Kas Kerupuk Olikans</title>
+<style>
+:root{--bg:#eef3f2;--card:#fff;--ink:#12303d;--mute:#5d7480;--line:#d9e3e2;--in:#1b8a5a;--out:#c4443a;--gold:#e9a216;--sea:#1d6b75}
+@media(prefers-color-scheme:dark){:root{--bg:#0c1a21;--card:#14262f;--ink:#e6f0f0;--mute:#93aab3;--line:#243b46;--in:#4cc790;--out:#ff7d70;--sea:#5cc0cb}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px system-ui,sans-serif}
+#app{max-width:780px;margin:auto;padding:14px 14px 108px}h1{font-size:20px;margin:0 0 10px}h2{font-size:16px;margin:18px 0 8px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px;margin-bottom:10px}
+.hero{background:var(--sea);color:#fff;border-radius:20px;padding:16px;margin-bottom:10px}.big{font-size:32px;font-weight:800}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.sub{color:var(--mute);font-size:13px}.hero .sub{color:#d6eef0}
+.seg{display:flex;gap:6px;margin:10px 0}.seg button,.chips button{flex:1;font:inherit;font-weight:700;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:12px;padding:11px;min-height:44px}
+.seg .on{background:var(--ink);color:var(--bg)}
+label{display:block;font-weight:700;font-size:14px;margin:10px 0 4px}input,select{width:100%;font:inherit;padding:11px;border-radius:12px;border:1px solid var(--line);background:var(--bg);color:var(--ink);min-height:46px}
+.btn{width:100%;border:0;border-radius:14px;padding:14px;font:inherit;font-weight:800;background:var(--in);color:#fff;margin-top:12px;min-height:50px}.btn.s{width:auto;padding:6px 12px;min-height:38px;margin:0}
+.row{display:flex;justify-content:space-between;gap:8px;padding:9px 0;border-bottom:1px solid var(--line)}.row:last-child{border:0}
+.in{color:var(--in)}.out{color:var(--out)}.res{background:var(--bg);border-radius:12px;padding:12px;margin-top:10px}.res b{font-size:20px}
+nav{position:fixed;left:0;right:0;bottom:0;background:var(--card);border-top:1px solid var(--line);display:flex;padding-bottom:env(safe-area-inset-bottom)}
+nav button{flex:1;border:0;background:none;color:var(--mute);font:inherit;font-size:12px;font-weight:700;padding:10px;min-height:56px}nav .on{color:var(--sea)}nav span{display:block;font-size:20px}
+#t{position:fixed;left:50%;bottom:80px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:99px;opacity:0;transition:.2s;pointer-events:none}#t.s{opacity:1}
+svg text{fill:var(--mute);font-size:10px}
+.acct-tabs{display:flex;gap:5px;overflow-x:auto;margin:10px 0;padding-bottom:3px}.acct-tabs button{white-space:nowrap;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);padding:10px;font:inherit;font-size:12px;font-weight:700}.acct-tabs .on{background:var(--sea);color:#fff}
+.table-scroll{overflow-x:auto;margin-top:12px}.acct-table{width:100%;border-collapse:collapse;font-size:12px;min-width:530px}.acct-table th,.acct-table td{border-bottom:1px solid var(--line);padding:9px 7px;vertical-align:top}.acct-table th{text-align:left;background:var(--bg)}.acct-table td:nth-last-child(-n+2),.acct-table th:nth-last-child(-n+2){text-align:right;white-space:nowrap}.acct-table .total{background:var(--bg)}.notice{padding:12px;background:var(--bg);border-left:4px solid var(--gold);border-radius:8px;font-size:13px;line-height:1.5}.notice ul{padding-left:18px}
+.bg{cursor:pointer;transition:opacity .15s}.cinfo{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px;font-size:14px}.cinfo small{display:block;color:var(--mute);font-size:12px}
+</style></head><body><div id="app"></div><div id="t"></div>
+<nav id="nav"></nav>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.105.4/dist/umd/supabase.js"></script>
+<script src="config.js"></script>
+<script src="db.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js" defer></script>
+<script src="accounting.js"></script>
+<script src="accounting-ui.js"></script>
+<script>
+/* ===== Data (offline-first, localStorage). Ganti ke Supabase di tahap berikutnya ===== */
+const K='kas-umkm-v1';
+let S={tx:[],batch:[],cfg:{ikan:35000,tap:12000,gram:250,jual:14000,share:33,rend:75,lain:2500}};
+try{const r=localStorage.getItem(K);if(r)S=JSON.parse(r)}catch(e){}
+const put=()=>{try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}};
+const $=s=>document.querySelector(s),rp=n=>(n<0?'-':'')+'Rp '+Math.round(Math.abs(n)).toLocaleString('id-ID'),esc=Accounting.escape;
+const iso=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+const T0=()=>{const d=new Date();d.setHours(0,0,0,0);return d};
+const ago=s=>Math.round((T0()-new Date(s+'T00:00'))/864e5);
+let view='home',per='hari',tab='in';
+const toast=m=>{const t=$('#t');t.textContent=m;t.className='s';setTimeout(()=>t.className='',2000)};
+/* ===== Cashflow ===== */
+const MON=['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agu','Sep','Okt','Nov','Des'];
+const dl=i=>{const x=new Date(T0()-i*864e5);return x.getDate()+' '+MON[x.getMonth()]};
+function buckets(){const B=[],n=new Date();
+ if(per=='hari')for(let i=6;i>=0;i--)B.push({l:i?'-'+i:'Ini',n:i?dl(i):'Hari ini',t:x=>ago(x.date)==i});
+ if(per=='minggu')for(let w=3;w>=0;w--)B.push({l:w?'-'+w+'mg':'Mg ini',n:w?w+' minggu lalu':'7 hari terakhir',t:x=>{const a=ago(x.date);return a>=w*7&&a<w*7+7}});
+ if(per=='bulan')for(let m=3;m>=0;m--){const d=new Date(n.getFullYear(),n.getMonth()-m,1);B.push({l:MON[d.getMonth()],n:MON[d.getMonth()]+' '+d.getFullYear(),t:x=>{const y=new Date(x.date+'T00:00');return y.getMonth()==d.getMonth()&&y.getFullYear()==d.getFullYear()}})}
+ const cash=Accounting.cashHistory(S.tx);B.forEach(b=>{const s=cash.filter(x=>b.t(x));b.in=s.filter(x=>x.amt>0).reduce((a,x)=>a+x.amt,0);b.out=-s.filter(x=>x.amt<0).reduce((a,x)=>a+x.amt,0)});return B}
+let CB=[];
+function chart(B){CB=B;const H=120,W=400,mx=Math.max(...B.flatMap(b=>[b.in,b.out]),1),w=W/B.length;
+ return `<svg viewBox="0 0 ${W} ${H+16}" width="100%" role="img" aria-label="Grafik uang masuk dan keluar">`+B.map((b,i)=>{const x=i*w+w/2,a=b.in/mx*H,c=b.out/mx*H;
+  return `<g class="bg" data-b="${i}"><rect x="${i*w}" y="0" width="${w}" height="${H+16}" fill="transparent"/><rect x="${x-13}" y="${H-a}" width="12" height="${a}" fill="var(--in)" rx="3"/><rect x="${x+1}" y="${H-c}" width="12" height="${c}" fill="var(--out)" rx="3"/><text x="${x}" y="${H+12}" text-anchor="middle">${b.l}</text></g>`}).join('')+`</svg><div id="cinfo" class="cinfo"></div>`}
+/* Detail batang: dipanggil saat kursor diarahkan (hover) atau layar disentuh (klik) */
+const showB=i=>{const b=CB[i],el=$('#cinfo');if(!b||!el)return;const u=b.in-b.out;
+ document.querySelectorAll('.bg').forEach(g=>g.style.opacity=g.dataset.b==i?1:.4);
+ el.innerHTML=`<div style="grid-column:1/-1"><b>${b.n||b.l}</b></div><div><small>Masuk</small><b class="in">${rp(b.in)}</b></div><div><small>Keluar</small><b class="out">${rp(b.out)}</b></div><div><small>Selisih kas</small><b class="${u>=0?'in':'out'}">${rp(u)}</b></div>`};
+const seg=()=>`<div class="seg">${['hari','minggu','bulan'].map(p=>`<button class="${per==p?'on':''}" data-per="${p}">${p}</button>`).join('')}</div>`;
+const row=x=>`<div class="row"><div>${esc(x.note||x.cat)}<div class="sub">${esc(x.who||x.cat)} · ${esc(x.date)}${x.paid?'':' · BELUM LUNAS'}</div></div><b class="${x.type}">${x.type=='in'?'+':'−'}${rp(x.amt)}</b></div>`;
+function home(){const B=buckets(),c=B[B.length-1],pu=S.tx.filter(x=>x.type=='in'&&!x.paid);
+ return `<h1>Kerupuk Olikans</h1>${seg()}<div class="hero"><div class="sub">Selisih kas periode ini (bukan laba)</div><div class="big">${rp(c.in-c.out)}</div><div class="g2"><div>Masuk<br><b>${rp(c.in)}</b></div><div>Keluar<br><b>${rp(c.out)}</b></div></div></div>
+ <div class="card">${chart(B)}</div>
+ <h2>Piutang (${rp(pu.reduce((a,x)=>a+x.amt,0))})</h2><div class="card">${pu.map(x=>`<div class="row"><div>${esc(x.who)}<div class="sub">${esc(x.note)} · ${esc(x.date)}</div></div><div><b>${rp(x.amt)}</b> <button class="btn s" data-pay="${x.id}">Lunas</button></div></div>`).join('')||'<span class="sub">Tidak ada piutang.</span>'}</div>
+ <h2>Transaksi terakhir</h2><div class="card">${S.tx.filter(x=>x.paid).slice(-6).reverse().map(row).join('')||'<span class="sub">Belum ada transaksi. Ketuk Catat.</span>'}</div>`}
+const CAT=['Bahan baku','Kemasan','Gas & listrik','Upah','Transport','Lain-lain'];
+function incomeInputs(kind){return kind==='Penjualan'?`<label>Pelanggan</label><input id="a1" placeholder="Toko Sari / Eceran"><label>Jumlah bungkus</label><input id="a2" type="number" inputmode="numeric" min="1"><label>Harga per bungkus</label><input id="a3" type="number" inputmode="numeric" min="1" value="${S.cfg.jual}"><label>Pembayaran</label><select id="a4"><option value="1">Lunas</option><option value="0">Belum bayar (piutang)</option></select>`:`<label>Nominal (Rp)</label><input id="a2" type="number" inputmode="numeric" min="1"><label>Keterangan</label><input id="a3" placeholder="Sumber penerimaan">`}
+function add(){return `<h1>Catat</h1><div class="seg"><button class="${tab=='in'?'on':''}" data-tab="in">Uang masuk</button><button class="${tab=='out'?'on':''}" data-tab="out">Uang keluar</button></div><div class="card">
+ <label>Tanggal</label><input id="a0" type="date" value="${iso(new Date())}">
+ ${tab=='in'?`<label>Jenis uang masuk</label><select id="income-kind"><option value="Penjualan">Penjualan kerupuk</option><option value="Setoran modal">Setoran modal pemilik</option><option value="Pinjaman diterima">Pinjaman diterima</option><option value="Pendapatan lain">Pendapatan lainnya</option></select><div id="income-inputs">${incomeInputs('Penjualan')}</div>`
+ :`<label>Kategori</label><select id="a1">${CAT.map(c=>`<option>${c}</option>`).join('')}</select><label>Nominal (Rp)</label><input id="a2" type="number" inputmode="numeric"><label>Catatan</label><input id="a3">`}
+ <button class="btn" data-save>Simpan</button></div>`}
+async function saveTx(){const v=i=>$('#a'+i)?.value,date=v(0),id=Date.now()*1000+Math.floor(Math.random()*1000);let tx;
+ if(!date)return toast('Pilih tanggal transaksi');
+ if(tab==='in'){
+  const kind=$('#income-kind')?.value||'Penjualan';
+  if(kind==='Penjualan'){
+   const q=+v(2),p=+v(3);if(!Number.isInteger(q)||q<=0||!Number.isFinite(p)||p<=0)return toast('Isi jumlah dan harga yang valid');
+   tx={id,date,type:'in',who:v(1)||'Eceran',note:'Jual '+q+' bks',amt:Math.round(q*p),cat:'Penjualan',paid:v(4)==='1',paid_at:v(4)==='1'?date:null};
+  }else{
+   const n=+v(2);if(!Number.isFinite(n)||n<=0)return toast('Nominal harus positif');
+   tx={id,date,type:'in',who:'',note:v(3)||kind,amt:Math.round(n),cat:kind,paid:true,paid_at:date};
+  }
+ }else{
+  const n=+v(2);if(!Number.isFinite(n)||n<=0)return toast('Nominal harus positif');
+  tx={id,date,type:'out',cat:v(1),note:v(3)||v(1),amt:Math.round(n),paid:true,paid_at:date};
+ }
+ try{await DB.addTx(tx);S.tx.push(tx);put();toast(DB.ready?'Tersimpan ke Supabase':'Tersimpan lokal');view='home';render();}
+ catch(e){console.error(e);toast('Gagal menyimpan: '+(e.message||'periksa koneksi / SQL migrasi'));}
+}
+/* ===== Produksi: bahan pokok, rendemen, rencana ===== */
+const sum=(a,f)=>a.reduce((s,x)=>s+f(x),0);
+function eff(){const B=S.batch,c=S.cfg;if(!B.length)return{rend:c.rend,share:c.share,src:'perkiraan awal (belum ada data produksi)',n:0};
+ const bahan=sum(B,b=>b.ikan+b.tap);return{rend:sum(B,b=>b.out)/bahan*100,share:sum(B,b=>b.ikan)/bahan*100,src:'rata-rata dari '+B.length+' produksi Anda',n:B.length}}
+function plan(N){const c=S.cfg,e=eff(),kg=N*c.gram/1000,bahan=kg/(e.rend/100),ik=bahan*e.share/100,tp=bahan-ik,biaya=ik*c.ikan+tp*c.tap+N*c.lain;
+ return{kg,bahan,ik,tp,biaya,hpp:N?biaya/N:0,laba:c.jual-(N?biaya/N:0)}}
+const num=(k,l,u)=>`<label>${l}</label><input type="number" inputmode="decimal" data-cfg="${k}" value="${S.cfg[k]}"${u?' placeholder="'+u+'"':''}>`;
+function prod(){const e=eff();
+ return `<h1>Produksi & bahan pokok</h1>
+ <div class="card"><b>1. Harga & takaran</b>${num('ikan','Harga ikan per kg (Rp)')}${num('tap','Harga tapioka per kg (Rp)')}${num('lain','Biaya lain per bungkus: bumbu, minyak, gas, kemasan, upah (Rp)')}${num('gram','Isi per bungkus (gram)')}${num('jual','Harga jual per bungkus (Rp)')}
+ <div class="sub" style="margin-top:8px">Rendemen dan rasio awal (dipakai sebelum ada data produksi sendiri):</div>${num('rend','Rendemen awal (%): kerupuk jadi dibanding total ikan + tapioka')}${num('share','Porsi ikan awal (%) dari total ikan + tapioka')}</div>
+ <div class="card"><b>2. Rencana produksi</b><div class="sub">Memakai ${e.src}: rendemen ${e.rend.toFixed(0)}%, porsi ikan ${e.share.toFixed(0)}%.</div>
+ <label>Target jumlah bungkus</label><input id="pn" type="number" inputmode="numeric" value="200"><div class="res" id="pr"></div></div>
+ <div class="card"><b>3. Catat hasil produksi</b><div class="sub">Timbang bahan dan hasil jadi. Makin banyak data, makin akurat rencana di atas.</div>
+ <label>Tanggal</label><input id="b0" type="date" value="${iso(new Date())}"><label>Ikan terpakai (kg)</label><input id="b1" type="number" inputmode="decimal"><label>Tapioka terpakai (kg)</label><input id="b2" type="number" inputmode="decimal"><label>Kerupuk jadi (kg)</label><input id="b3" type="number" inputmode="decimal"><button class="btn" data-batch>Simpan produksi</button></div>
+ <h2>Riwayat produksi</h2><div class="card">${S.batch.slice().reverse().map(b=>`<div class="row"><div>${esc(b.date)}<div class="sub">ikan ${b.ikan} kg · tapioka ${b.tap} kg · hasil ${b.out} kg</div></div><div style="text-align:right"><b>${(b.out/(b.ikan+b.tap)*100).toFixed(0)}%</b><div class="sub">${Math.round(b.out*1000/S.cfg.gram)} bks</div></div></div>`).join('')||'<span class="sub">Belum ada produksi tercatat.</span>'}</div>`}
+function calc(){const N=+$('#pn').value||0,p=plan(N);
+ $('#pr').innerHTML=`<div class="sub">Bahan yang dibutuhkan</div><b>Ikan ${p.ik.toFixed(1)} kg · Tapioka ${p.tp.toFixed(1)} kg</b>
+ <div class="sub" style="margin-top:8px">Perkiraan biaya produksi</div><b>${rp(p.biaya)}</b><div class="sub" style="margin-top:8px">Modal per bungkus (HPP)</div><b>${rp(p.hpp)}</b>
+ <div class="sub" style="margin-top:8px">Untung per bungkus</div><b class="${p.laba>=0?'in':'out'}">${rp(p.laba)}</b>${p.laba<0?'<div class="out">Harga jual di bawah modal.</div>':''}`}
+async function saveBatch(){const v=i=>+$('#b'+i).value;if([1,2,3].some(i=>!Number.isFinite(v(i))||v(i)<=0))return toast('Isi ikan, tapioka, dan hasil positif');
+ const b={id:Date.now()*1000+Math.floor(Math.random()*1000),date:$('#b0').value,ikan:v(1),tap:v(2),out:v(3)};try{await DB.addBatch(b);S.batch.push(b);put();toast('Produksi tersimpan');render()}catch(e){toast('Gagal menyimpan produksi: '+e.message)}}
+/* ===== Render & event ===== */
+function render(){$('#app').innerHTML={home,add,prod,akun,akuntansi:AUI.render}[view]();if(view=='prod')calc();if(view=='home')showB(CB.length-1);
+ $('#nav').innerHTML=[['home','🏠','Beranda'],['add','＋','Catat'],['prod','🐟','Produksi'],['akuntansi','📚','Akuntansi'],['akun','👤','Akun']].map(([k,i,l])=>`<button class="${view==k?'on':''}" data-v="${k}"><span>${i}</span>${l}</button>`).join('')}
+document.addEventListener('click',e=>{const g=a=>e.target.closest('['+a+']');
+ if(g('data-v')){view=g('data-v').dataset.v;return render()}if(g('data-per')){per=g('data-per').dataset.per;return render()}
+ if(g('data-tab')){tab=g('data-tab').dataset.tab;return render()}if(g('data-save'))return saveTx();if(g('data-batch'))return saveBatch();
+ if(g('data-pay')){(async()=>{const x=S.tx.find(y=>String(y.id)===g('data-pay').dataset.pay);if(!x)return;const prev={paid:x.paid,paid_at:x.paid_at};x.paid=true;x.paid_at=iso(new Date());try{await DB.updTx(x);put();toast('Pelunasan dicatat, tanggal penjualan tetap');render()}catch(err){Object.assign(x,prev);toast('Gagal menyimpan pelunasan');}})()}});
+document.addEventListener('change',e=>{if(e.target.id==='income-kind'){$('#income-inputs').innerHTML=incomeInputs(e.target.value);}});
+document.addEventListener('input',e=>{const k=e.target.dataset.cfg;if(k){S.cfg[k]=+e.target.value||0;put();DB.saveCfg(S.cfg);calc()}if(e.target.id=='pn')calc()});
+document.addEventListener('pointerover',e=>{const g=e.target.closest('[data-b]');if(g)showB(g.dataset.b)});
+document.addEventListener('click',e=>{const g=e.target.closest('[data-b]');if(g)showB(g.dataset.b)});
+if('serviceWorker'in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
+render();DB.boot().then(d=>{if(d){S=d;put();render()}}).catch(console.warn);
+</script></body></html>
