@@ -1,130 +1,4357 @@
 <!DOCTYPE html>
-<html lang="id"><head><meta charset="utf-8">
+<html lang="id">
+<head>
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#1d6b75"><link rel="manifest" href="manifest.json"><link rel="icon" href="icon.svg">
-<title>Kas Kerupuk Olikans</title>
+<meta name="theme-color" content="#F6F3EE">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+<title>Olikans Business</title>
+
 <style>
-:root{--bg:#eef3f2;--card:#fff;--ink:#12303d;--mute:#5d7480;--line:#d9e3e2;--in:#1b8a5a;--out:#c4443a;--gold:#e9a216;--sea:#1d6b75}
-@media(prefers-color-scheme:dark){:root{--bg:#0c1a21;--card:#14262f;--ink:#e6f0f0;--mute:#93aab3;--line:#243b46;--in:#4cc790;--out:#ff7d70;--sea:#5cc0cb}}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px system-ui,sans-serif}
-#app{max-width:780px;margin:auto;padding:14px 14px 108px}h1{font-size:20px;margin:0 0 10px}h2{font-size:16px;margin:18px 0 8px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px;margin-bottom:10px}
-.hero{background:var(--sea);color:#fff;border-radius:20px;padding:16px;margin-bottom:10px}.big{font-size:32px;font-weight:800}
-.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.sub{color:var(--mute);font-size:13px}.hero .sub{color:#d6eef0}
-.seg{display:flex;gap:6px;margin:10px 0}.seg button,.chips button{flex:1;font:inherit;font-weight:700;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:12px;padding:11px;min-height:44px}
-.seg .on{background:var(--ink);color:var(--bg)}
-label{display:block;font-weight:700;font-size:14px;margin:10px 0 4px}input,select{width:100%;font:inherit;padding:11px;border-radius:12px;border:1px solid var(--line);background:var(--bg);color:var(--ink);min-height:46px}
-.btn{width:100%;border:0;border-radius:14px;padding:14px;font:inherit;font-weight:800;background:var(--in);color:#fff;margin-top:12px;min-height:50px}.btn.s{width:auto;padding:6px 12px;min-height:38px;margin:0}
-.row{display:flex;justify-content:space-between;gap:8px;padding:9px 0;border-bottom:1px solid var(--line)}.row:last-child{border:0}
-.in{color:var(--in)}.out{color:var(--out)}.res{background:var(--bg);border-radius:12px;padding:12px;margin-top:10px}.res b{font-size:20px}
-nav{position:fixed;left:0;right:0;bottom:0;background:var(--card);border-top:1px solid var(--line);display:flex;padding-bottom:env(safe-area-inset-bottom)}
-nav button{flex:1;border:0;background:none;color:var(--mute);font:inherit;font-size:12px;font-weight:700;padding:10px;min-height:56px}nav .on{color:var(--sea)}nav span{display:block;font-size:20px}
-#t{position:fixed;left:50%;bottom:80px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:99px;opacity:0;transition:.2s;pointer-events:none}#t.s{opacity:1}
-svg text{fill:var(--mute);font-size:10px}
-.acct-tabs{display:flex;gap:5px;overflow-x:auto;margin:10px 0;padding-bottom:3px}.acct-tabs button{white-space:nowrap;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);padding:10px;font:inherit;font-size:12px;font-weight:700}.acct-tabs .on{background:var(--sea);color:#fff}
-.table-scroll{overflow-x:auto;margin-top:12px}.acct-table{width:100%;border-collapse:collapse;font-size:12px;min-width:530px}.acct-table th,.acct-table td{border-bottom:1px solid var(--line);padding:9px 7px;vertical-align:top}.acct-table th{text-align:left;background:var(--bg)}.acct-table td:nth-last-child(-n+2),.acct-table th:nth-last-child(-n+2){text-align:right;white-space:nowrap}.acct-table .total{background:var(--bg)}.notice{padding:12px;background:var(--bg);border-left:4px solid var(--gold);border-radius:8px;font-size:13px;line-height:1.5}.notice ul{padding-left:18px}
-.bg{cursor:pointer;transition:opacity .15s}.cinfo{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px;font-size:14px}.cinfo small{display:block;color:var(--mute);font-size:12px}
-</style></head><body><div id="app"></div><div id="t"></div>
+:root{
+  color-scheme:light;
+  --bg:#F8E8C6;        /* pasir keemasan (latar) */
+  --card:#FFF5DE;      /* krem mentega (kartu) */
+  --ink:#3A2E1F;       /* cokelat hangat (teks) */
+  --mute:#8A7656;      /* teks sekunder */
+  --line:#EBD6A8;      /* garis pemisah */
+  --in:#1F7C82;        /* uang masuk: hijau laut */
+  --out:#D2693A;       /* uang keluar: oranye terakota */
+  --gold:#E8B84A;
+  --sea:#2A8D93;       /* warna utama: biru-hijau laut */
+  --on-sea:#FFFFFF;
+  --soft:#D6ECE4;      /* hijau busa laut (KPI penjualan, hero) */
+  --warn-soft:#FAE2A0; /* kuning keemasan */
+  --out-soft:#F8D6BC;  /* peach udang */
+  --cta:#F29A52;       /* oranye kerupuk goreng */
+  --cta-ink:#4A2306;
+  --cta-soft:#FCDDB8;
+  --field:#FFFAEB;     /* isi kolom input */
+  --r1:12px; --r2:20px;
+  --shadow:0 1px 2px rgba(90,60,20,.06),0 8px 24px rgba(90,60,20,.10);
+}
+*{box-sizing:border-box}
+html{scroll-padding-top:12px}
+body{margin:0;background:var(--bg);color:var(--ink);font:500 15px/1.45 "Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
+#app{max-width:780px;margin:auto;padding:16px 14px 120px;animation:fade .2s ease}
+@keyframes fade{from{opacity:.4}to{opacity:1}}
+h1{font-size:20px;margin:0 0 10px;letter-spacing:-.2px}
+h2{font-size:16px;margin:20px 0 8px}
+.ic{flex:none;vertical-align:middle}
+.num,.val,.big,b{font-variant-numeric:tabular-nums}
+
+.card,.kpi{background:var(--card);border-radius:var(--r2);padding:14px;margin-bottom:10px;box-shadow:var(--shadow)}
+.card>details>summary{cursor:pointer;font-weight:800;list-style:none;display:flex;justify-content:space-between;align-items:center}
+.card>details>summary::-webkit-details-marker{display:none}
+.card>details>summary::after{content:"▾";color:var(--mute)}
+.card>details[open]>summary{margin-bottom:6px}
+
+/* beranda */
+.brand{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.logo{width:40px;height:40px;border-radius:var(--r1);background:var(--sea);color:var(--on-sea);display:grid;place-items:center;font-weight:800;font-size:18px}
+.brand b{display:block;font-size:15px}
+.brand span{font-size:12px;color:var(--mute)}
+.sync{margin-left:auto;font-size:12px;color:var(--mute);display:flex;align-items:center;gap:6px}
+.sync i{width:8px;height:8px;border-radius:50%;background:var(--gold);animation:pulse 1s infinite alternate}
+@keyframes pulse{to{opacity:.3}}
+.greet{margin:4px 0 14px}
+.greet h1{font-size:23px;margin:0 0 4px}
+.greet p{margin:0;color:var(--mute);font-size:14px}
+.kpis,.qa,.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.kpis{margin-bottom:14px}
+.kpi{margin:0}
+.kpi[data-v]{cursor:pointer}
+.kpi .lbl{font-size:12px;font-weight:700;color:var(--mute);display:flex;gap:6px;align-items:center}
+.kpi .val{font-size:23px;font-weight:800;margin:6px 0 4px;line-height:1.15;letter-spacing:-.3px}
+.kpi .note{font-size:12px;color:var(--mute)}
+.k-sales{background:var(--soft)}.k-warn{background:var(--warn-soft)}.k-danger{background:var(--out-soft)}
+.up{color:var(--in);font-weight:700}.down{color:var(--out);font-weight:700}
+
+.qa button{display:flex;gap:6px;align-items:center;justify-content:center}
+.sec-head{display:flex;justify-content:space-between;align-items:center;margin:20px 0 8px}
+.sec-head h2{margin:0}
+.sec-head button{border:0;background:none;color:var(--in);font:inherit;font-weight:700;font-size:13px;cursor:pointer}
+
+/* tombol */
+button{font:inherit}
+.btn,.qa button{border:0;border-radius:var(--r1);font-weight:800;min-height:50px;cursor:pointer;transition:transform .12s,filter .12s,background .12s}
+.btn{width:100%;padding:14px;background:var(--sea);color:var(--on-sea);margin-top:12px}
+.btn.s{width:auto;padding:6px 14px;min-height:38px;margin:0}
+.btn.cta,.qa .cta{background:var(--cta);color:var(--cta-ink)}
+.qa .pri{background:var(--sea);color:var(--on-sea)}
+.qa button{padding:14px 10px;box-shadow:var(--shadow)}
+.btn.ghost{background:transparent;color:var(--mute);box-shadow:inset 0 0 0 1px var(--line)}
+.btn.danger{background:var(--out-soft);color:var(--out)}
+.btn:active,.qa button:active{transform:scale(.98)}
+.btn:hover,.qa button:hover{filter:brightness(1.03)}
+:is(button,summary,[tabindex]):focus-visible{outline:2px solid var(--sea);outline-offset:2px}
+
+/* badge & pill */
+.badge{display:inline-block;font-size:11px;font-weight:800;padding:3px 9px;border-radius:99px;background:var(--cta-soft);color:#9a5a1f}
+.b-PROCESSING,.b-READY_TO_SHIP{background:var(--warn-soft);color:#8a6a00}
+.b-SHIPPED,.b-COMPLETED{background:var(--soft);color:var(--in)}
+.b-CANCELLED{background:var(--out-soft);color:var(--out)}
+.stock-pill{font-weight:800;font-size:13px;padding:4px 10px;border-radius:99px;background:var(--out-soft);color:var(--out);white-space:nowrap}
+.stock-pill.zero{background:var(--out);color:#fff}
+
+.hero{background:var(--soft);border-radius:var(--r2);padding:16px;margin-bottom:10px}
+.big{font-size:30px;font-weight:800;letter-spacing:-.5px}
+.sub{color:var(--mute);font-size:13px}
+
+/* tab periode (garis bawah) */
+.tabs{display:flex;gap:18px;margin:12px 0 14px;border-bottom:1px solid var(--line)}
+.tabs button{background:none;border:0;border-bottom:2px solid transparent;color:var(--mute);min-height:40px;padding:8px 4px;font-weight:700;text-transform:capitalize;cursor:pointer}
+.tabs .on{color:var(--in);border-bottom-color:var(--sea)}
+/* toggle form (pill) */
+.pills{display:flex;gap:4px;padding:4px;background:#ECE8E0;border-radius:99px;margin:10px 0}
+.pills button{flex:1;border:0;background:none;border-radius:99px;min-height:40px;font-weight:700;color:var(--mute);cursor:pointer;transition:.15s}
+.pills .on{background:var(--card);color:var(--ink);box-shadow:var(--shadow)}
+
+label{display:block;font-weight:700;font-size:14px;margin:12px 0 4px}
+input,select{width:100%;font:inherit;padding:11px 12px;border-radius:var(--r1);border:1px solid var(--line);background:var(--field);color:var(--ink);min-height:46px}
+input:focus,select:focus{outline:2px solid var(--sea);outline-offset:0;background:#fff}
+
+.row{display:flex;justify-content:space-between;gap:8px;padding:10px 0;border-bottom:1px solid var(--line)}
+.row:last-child{border:0}
+.in{color:var(--in)}.out{color:var(--out)}
+.res{background:var(--field);border-radius:var(--r1);padding:12px;margin-top:10px}
+.res b{font-size:19px}
+.notice{padding:12px;background:var(--warn-soft);border-left:4px solid var(--gold);border-radius:var(--r1);font-size:13px;line-height:1.5;margin-bottom:10px}
+
+/* navbar */
+nav{position:fixed;left:0;right:0;bottom:0;display:flex;gap:4px;padding:8px 8px calc(8px + env(safe-area-inset-bottom));background:rgba(255,255,255,.82);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-top:1px solid var(--line);z-index:50}
+nav button{flex:1;border:0;background:none;color:var(--mute);font-size:11px;font-weight:700;padding:7px 4px;min-height:54px;border-radius:var(--r1);cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;transition:background .2s,color .2s}
+nav .on{color:var(--in);background:var(--soft)}
+
+/* toast */
+#t{position:fixed;left:50%;bottom:92px;transform:translate(-50%,8px);background:var(--ink);color:#fff;padding:10px 16px;border-radius:99px;opacity:0;transition:.2s;pointer-events:none;z-index:9999;max-width:90%;text-align:center;font-size:14px}
+#t.s{opacity:1;transform:translate(-50%,0)}
+#t.e{background:var(--out)}
+
+/* tabel akuntansi */
+.acct-tabs{display:flex;gap:6px;overflow-x:auto;margin:10px 0;padding-bottom:3px}
+.acct-tabs button{white-space:nowrap;border:0;border-radius:var(--r1);background:var(--card);color:var(--ink);padding:10px 12px;font-size:12px;font-weight:700;box-shadow:var(--shadow)}
+.acct-tabs .on{background:var(--sea);color:var(--on-sea)}
+.table-scroll{overflow-x:auto;margin-top:12px}
+.acct-table{width:100%;border-collapse:collapse;font-size:12px;min-width:530px}
+.acct-table th,.acct-table td{border-bottom:1px solid var(--line);padding:9px 7px;vertical-align:top}
+.acct-table th{text-align:left;background:var(--field)}
+.acct-table td:nth-last-child(-n+2),.acct-table th:nth-last-child(-n+2){text-align:right;white-space:nowrap}
+.acct-table .total{background:var(--field)}
+.stock-good{color:var(--in)}.stock-low{color:var(--out)}
+
+/* grafik */
+.chart .legend{display:flex;gap:14px;font-size:12px;font-weight:700;color:var(--mute);margin-bottom:8px}
+.chart .legend i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px}
+.chart svg{display:block;overflow:visible}
+.chart svg text{font-size:11px;fill:var(--mute)}
+.chart .ln{stroke-dasharray:1;stroke-dashoffset:1;animation:draw .9s ease forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.chart .cguide{stroke:var(--sea);stroke-width:1.5;stroke-dasharray:4 4;opacity:0}
+.chart .cdot{fill:#fff;stroke-width:3;opacity:0}
+.chart .pt{opacity:.9}
+.chart .bg{cursor:pointer;outline:none}
+.chart .bg.sel .cguide,.chart .bg.sel .cdot{opacity:1}
+.chart .bg.sel text{fill:var(--in);font-weight:700}
+.chart .bg:focus-visible rect{stroke:var(--sea);stroke-width:1.5;rx:8}
+.chart .cinfo{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;background:var(--field);border-radius:var(--r1);padding:12px 14px;margin-top:12px;font-size:14px}
+.chart .cinfo small{display:block;color:var(--mute);font-size:12px}
+.chart .empty{font-size:13px}
+/* =========================================================
+   OLIKANS — LAPORAN USAHA UI v2.2
+   Untuk accounting-ui.js v2.2
+   ========================================================= */
+
+/* ---------- HALAMAN LAPORAN ---------- */
+
+.acct-page{
+  width:100%;
+}
+
+.acct-head{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:14px;
+}
+
+.acct-head h1{
+  margin-bottom:4px;
+}
+
+
+/* ---------- PERIODE LAPORAN ---------- */
+
+.acct-period-card{
+  background:linear-gradient(
+    135deg,
+    var(--card),
+    var(--field)
+  );
+}
+
+.acct-period-row{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:18px;
+  align-items:end;
+}
+
+.acct-period-row > div:first-child{
+  min-width:0;
+}
+
+.acct-period-row label{
+  margin-top:0;
+}
+
+.acct-period-row input{
+  max-width:250px;
+}
+
+.acct-period-info{
+  text-align:right;
+  padding-bottom:9px;
+}
+
+.acct-period-info b{
+  display:block;
+  margin-top:2px;
+  font-size:15px;
+}
+
+
+/* =========================================================
+   TAB LAPORAN
+   ========================================================= */
+
+.acct-tabs{
+  display:flex;
+  gap:6px;
+  overflow-x:auto;
+  margin:10px 0;
+  padding:2px 0 5px;
+  scrollbar-width:none;
+}
+
+.acct-tabs::-webkit-scrollbar{
+  display:none;
+}
+
+.acct-tabs button{
+  white-space:nowrap;
+  border:0;
+  border-radius:12px;
+  background:var(--card);
+  color:var(--ink);
+  padding:10px 14px;
+  min-height:40px;
+  font-size:12px;
+  font-weight:800;
+  box-shadow:var(--shadow);
+  cursor:pointer;
+  transition:
+    transform .12s ease,
+    background .15s ease,
+    color .15s ease;
+}
+
+.acct-tabs button:active{
+  transform:scale(.97);
+}
+
+.acct-tabs .on{
+  background:var(--sea);
+  color:var(--on-sea);
+}
+
+
+/* ---------- DETAIL AKUNTANSI ---------- */
+
+.acct-detail-label{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin:18px 0 0;
+  color:var(--mute);
+  font-size:11px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+
+.acct-detail-label::after{
+  content:"";
+  height:1px;
+  background:var(--line);
+  flex:1;
+}
+
+.acct-tabs-secondary{
+  margin-top:8px;
+}
+
+.acct-tabs-secondary button{
+  background:transparent;
+  box-shadow:inset 0 0 0 1px var(--line);
+}
+
+.acct-tabs-secondary .on{
+  background:var(--ink);
+  color:#fff;
+  box-shadow:none;
+}
+
+
+/* =========================================================
+   KARTU RINGKASAN
+   ========================================================= */
+
+.acct-overview{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;
+  margin:4px 0 14px;
+}
+
+.acct-stat{
+  background:var(--field);
+  border:1px solid var(--line);
+  border-radius:var(--r2);
+  padding:14px;
+  min-width:0;
+}
+
+.acct-stat:nth-child(1){
+  background:var(--soft);
+}
+
+.acct-stat:nth-child(2){
+  background:var(--out-soft);
+}
+
+.acct-stat:nth-child(3){
+  background:var(--warn-soft);
+}
+
+.acct-stat:nth-child(4){
+  background:var(--card);
+}
+
+.acct-stat-label{
+  font-size:12px;
+  font-weight:800;
+  color:var(--mute);
+}
+
+.acct-stat-value{
+  font-size:21px;
+  font-weight:800;
+  line-height:1.15;
+  margin:7px 0 4px;
+  letter-spacing:-.3px;
+  overflow-wrap:anywhere;
+}
+
+
+/* =========================================================
+   DETAIL RINGKASAN
+   ========================================================= */
+
+.acct-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;
+  margin-bottom:10px;
+}
+
+.acct-mini-card{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:var(--r2);
+  padding:14px;
+  margin-bottom:10px;
+}
+
+.acct-grid .acct-mini-card{
+  margin-bottom:0;
+}
+
+.acct-mini-title{
+  font-size:14px;
+  font-weight:800;
+  margin-bottom:10px;
+}
+
+.acct-summary-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:12px;
+  padding:9px 0;
+  border-bottom:1px solid var(--line);
+  font-size:13px;
+}
+
+.acct-summary-row:last-child{
+  border-bottom:0;
+}
+
+.acct-summary-row span{
+  color:var(--mute);
+}
+
+.acct-summary-row b{
+  text-align:right;
+  white-space:nowrap;
+}
+
+.acct-summary-row.total-line{
+  margin-top:3px;
+  padding-top:11px;
+  font-weight:800;
+}
+
+.acct-summary-row.total-line span{
+  color:var(--ink);
+  font-weight:800;
+}
+
+
+/* =========================================================
+   CARD LAPORAN
+   ========================================================= */
+
+.acct-report-card{
+  margin-top:10px;
+}
+
+.acct-report-heading{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:12px;
+  margin-bottom:8px;
+}
+
+.acct-report-heading > div > b{
+  font-size:16px;
+}
+
+.acct-info-card{
+  margin-top:10px;
+}
+
+.acct-info-card p{
+  line-height:1.6;
+}
+
+
+/* =========================================================
+   FILTER BUKU BESAR
+   ========================================================= */
+
+.acct-filter{
+  margin:12px 0;
+}
+
+.acct-filter label{
+  margin-top:0;
+}
+
+.acct-filter select{
+  max-width:420px;
+}
+
+
+/* =========================================================
+   TABEL AKUNTANSI
+   ========================================================= */
+
+.table-scroll{
+  width:100%;
+  overflow-x:auto;
+  margin-top:12px;
+  border-radius:var(--r1);
+  -webkit-overflow-scrolling:touch;
+}
+
+.acct-table{
+  width:100%;
+  border-collapse:collapse;
+  font-size:12px;
+  min-width:530px;
+}
+
+.acct-table th,
+.acct-table td{
+  border-bottom:1px solid var(--line);
+  padding:10px 8px;
+  vertical-align:top;
+}
+
+.acct-table th{
+  text-align:left;
+  background:var(--field);
+  color:var(--mute);
+  font-size:11px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.02em;
+}
+
+.acct-table tbody tr:hover{
+  background:rgba(255,255,255,.25);
+}
+
+.acct-table td:nth-last-child(-n+2),
+.acct-table th:nth-last-child(-n+2){
+  text-align:right;
+  white-space:nowrap;
+}
+
+.acct-table .total{
+  background:var(--field);
+}
+
+.acct-table .total td{
+  border-top:1px solid var(--line);
+}
+
+
+/* =========================================================
+   WARNA ANGKA
+   ========================================================= */
+
+.acct-page .in{
+  color:var(--in);
+}
+
+.acct-page .out{
+  color:var(--out);
+}
+
+
+/* =========================================================
+   NOTICE DI LAPORAN
+   ========================================================= */
+
+.acct-page .notice{
+  margin-top:10px;
+}
+
+.acct-page .notice ul{
+  padding-left:20px;
+}
+
+.acct-page .notice li{
+  margin:4px 0;
+}
+
+
+/* =========================================================
+   TOMBOL EXPORT
+   ========================================================= */
+
+.acct-page [data-acct-export]{
+  margin-top:12px;
+  background:var(--sea);
+}
+
+.acct-page [data-acct-export]::first-letter{
+  font-size:16px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width:600px){
+
+  .acct-period-row{
+    grid-template-columns:1fr;
+    gap:8px;
+  }
+
+  .acct-period-row input{
+    max-width:none;
+  }
+
+  .acct-period-info{
+    text-align:left;
+    padding-bottom:0;
+  }
+
+  .acct-overview,
+  .acct-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .acct-stat{
+    padding:12px;
+  }
+
+  .acct-stat-value{
+    font-size:18px;
+  }
+
+}
+
+
+@media (max-width:390px){
+
+  .acct-overview,
+  .acct-grid{
+    grid-template-columns:1fr;
+  }
+
+  .acct-tabs button{
+    padding:9px 11px;
+  }
+
+}
+
+
+/* =========================================================
+   SENTUHAN VISUAL LAPORAN
+   ========================================================= */
+
+.acct-page .card{
+  border:1px solid rgba(235,214,168,.65);
+}
+
+.acct-page h1{
+  letter-spacing:-.4px;
+}
+
+.acct-page h2{
+  letter-spacing:-.2px;
+}
+
+.acct-page .sub{
+  line-height:1.5;
+}
+
+/* =========================================================
+   OLIKANS — ANALISIS PRODUKSI / TEKNIK FISIKA
+   ========================================================= */
+
+.tech-analysis{
+  width:100%;
+}
+
+
+/* ---------- HEADER GRAFIK ---------- */
+
+.tech-chart-card{
+  overflow:hidden;
+}
+
+.tech-chart-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:16px;
+  margin-bottom:12px;
+}
+
+.tech-chart-head b{
+  font-size:15px;
+}
+
+.tech-chart-head strong{
+  color:var(--sea);
+  font-size:18px;
+  white-space:nowrap;
+}
+
+
+/* ---------- GRAFIK ---------- */
+
+.tech-chart-scroll{
+  width:100%;
+  overflow-x:auto;
+  overflow-y:hidden;
+  margin-top:8px;
+  padding-bottom:4px;
+  -webkit-overflow-scrolling:touch;
+}
+
+.tech-chart-scroll svg{
+  display:block;
+  width:100%;
+  min-width:520px;
+  height:auto;
+}
+
+
+/* ---------- EMPTY STATE ---------- */
+
+.tech-empty{
+  padding:25px 14px;
+  text-align:center;
+  color:var(--mute);
+  background:var(--field);
+  border-radius:var(--r1);
+  font-size:12px;
+  margin-top:12px;
+}
+
+
+/* ---------- KPI TEKNIK ---------- */
+
+.tech-analysis .kpi .val{
+  overflow-wrap:anywhere;
+}
+
+.tech-analysis .kpi:nth-child(1){
+  background:var(--soft);
+}
+
+
+/* ---------- TABEL ---------- */
+
+.tech-analysis .table-scroll{
+  margin-top:0;
+}
+
+.tech-analysis .acct-table{
+  min-width:680px;
+}
+
+
+/* ---------- MOBILE ---------- */
+
+@media(max-width:600px){
+
+  .tech-chart-head{
+    gap:10px;
+  }
+
+  .tech-chart-head strong{
+    font-size:15px;
+  }
+
+  .tech-chart-scroll svg{
+    min-width:600px;
+  }
+
+}
+/* =========================================================
+   EVALUASI KINERJA PRODUKSI
+   ========================================================= */
+
+.tech-eval-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;
+  margin-bottom:12px;
+}
+
+.tech-eval-card{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+
+  padding:14px;
+
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:var(--r2);
+}
+
+.tech-eval-icon{
+  width:38px;
+  height:38px;
+
+  flex:0 0 38px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  border-radius:12px;
+
+  background:var(--soft);
+  color:var(--sea);
+
+  font-size:18px;
+  font-weight:800;
+}
+
+.tech-eval-card b{
+  display:block;
+  margin-top:3px;
+  font-size:16px;
+}
+
+.tech-eval-note{
+  margin-top:6px;
+
+  color:var(--mute);
+
+  font-size:12px;
+  line-height:1.45;
+}
+
+
+/* ---------- KESIMPULAN ---------- */
+
+.tech-conclusion{
+  margin:12px 0 16px;
+
+  padding:16px;
+
+  background:linear-gradient(
+    135deg,
+    var(--soft),
+    var(--card)
+  );
+
+  border:1px solid var(--line);
+  border-radius:var(--r2);
+}
+
+.tech-conclusion-title{
+  font-size:13px;
+  font-weight:800;
+
+  color:var(--sea);
+
+  margin-bottom:7px;
+}
+
+.tech-conclusion-text{
+  font-size:14px;
+  font-weight:700;
+  line-height:1.55;
+}
+
+
+/* ---------- MOBILE ---------- */
+
+@media(max-width:600px){
+
+  .tech-eval-grid{
+    grid-template-columns:1fr;
+  }
+
+}
+</style>
+</head>
+
+<body>
+<div id="app"></div>
+<div id="t"></div>
 <nav id="nav"></nav>
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.105.4/dist/umd/supabase.js"></script>
 <script src="config.js"></script>
 <script src="db.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js" defer></script>
 <script src="accounting.js"></script>
 <script src="accounting-ui.js"></script>
+
 <script>
-/* ===== Data (offline-first, localStorage). Ganti ke Supabase di tahap berikutnya ===== */
+/* ===================== DATA ===================== */
 const K='kas-umkm-v1';
-let S={tx:[],batch:[],cfg:{ikan:35000,tap:12000,gram:250,jual:14000,share:33,rend:75,lain:2500}};
+let S={tx:[],batch:[],products:[],customers:[],orders:[],orderItems:[],inventory:[],
+  cfg:{ikan:35000,tap:12000,gram:250,jual:14000,share:33,rend:75,lain:2500}};
 try{const r=localStorage.getItem(K);if(r)S=JSON.parse(r)}catch(e){}
 const put=()=>{try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}};
-const $=s=>document.querySelector(s),rp=n=>(n<0?'-':'')+'Rp '+Math.round(Math.abs(n)).toLocaleString('id-ID'),esc=Accounting.escape;
+const $=s=>document.querySelector(s);
+const rp=n=>(n<0?'-':'')+'Rp '+Math.round(Math.abs(n||0)).toLocaleString('id-ID');
+const esc=Accounting.escape;
 const iso=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
 const T0=()=>{const d=new Date();d.setHours(0,0,0,0);return d};
 const ago=s=>Math.round((T0()-new Date(s+'T00:00'))/864e5);
-let view='home',per='hari',tab='in';
-const toast=m=>{const t=$('#t');t.textContent=m;t.className='s';setTimeout(()=>t.className='',2000)};
-/* ===== Cashflow ===== */
+const emptyItem=()=>({product_id:'',quantity:1});
+
+let view='home',per='hari',tab='in',productEdit=null,stockEdit=null,orderEdit=null,
+    orderDraft=[emptyItem()],syncing=true;
+
+const ERR=/gagal|wajib|harus|tidak|silakan|^isi |pilih|masukkan|sudah|masih|kehabisan|mencukupi/i;
+let toastT;
+const toast=m=>{
+  const t=$('#t');if(!t)return;
+  t.textContent=m;
+  t.className='s'+(ERR.test(m)?' e':'');
+  clearTimeout(toastT);
+  toastT=setTimeout(()=>t.className='',2800);
+};
+
+/* ===================== IKON ===================== */
+const IC={
+  home:'<path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/>',
+  cart:'<circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.5 12h11l2-8H6"/>',
+  box:'<path d="M21 8l-9-5-9 5v8l9 5 9-5z"/><path d="M3 8l9 5 9-5M12 13v8"/>',
+  fac:'<path d="M3 21V9l6 4V9l6 4V4h4v17z"/>',
+  menu:'<path d="M4 6h16M4 12h16M4 18h16"/>',
+  wallet:'<path d="M3 7h16a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M3 7l12-3v3"/><circle cx="17" cy="13.5" r="1"/>',
+  book:'<path d="M4 4h12a3 3 0 013 3v13H7a3 3 0 01-3-3z"/><path d="M4 17a3 3 0 013-3h12"/>',
+  user:'<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/>',
+  coin:'<circle cx="12" cy="12" r="9"/><path d="M12 7v10M9.5 9.5h4a1.5 1.5 0 010 3h-3a1.5 1.5 0 000 3h4"/>',
+  receipt:'<path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/>',
+  plus:'<path d="M12 5v14M5 12h14"/>'
+};
+const ic=(n,s=20)=>`<svg class="ic" width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${IC[n]}</svg>`;
+
+/* ===================== KAS ===================== */
 const MON=['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agu','Sep','Okt','Nov','Des'];
 const dl=i=>{const x=new Date(T0()-i*864e5);return x.getDate()+' '+MON[x.getMonth()]};
-function buckets(){const B=[],n=new Date();
- if(per=='hari')for(let i=6;i>=0;i--)B.push({l:i?'-'+i:'Ini',n:i?dl(i):'Hari ini',t:x=>ago(x.date)==i});
- if(per=='minggu')for(let w=3;w>=0;w--)B.push({l:w?'-'+w+'mg':'Mg ini',n:w?w+' minggu lalu':'7 hari terakhir',t:x=>{const a=ago(x.date);return a>=w*7&&a<w*7+7}});
- if(per=='bulan')for(let m=3;m>=0;m--){const d=new Date(n.getFullYear(),n.getMonth()-m,1);B.push({l:MON[d.getMonth()],n:MON[d.getMonth()]+' '+d.getFullYear(),t:x=>{const y=new Date(x.date+'T00:00');return y.getMonth()==d.getMonth()&&y.getFullYear()==d.getFullYear()}})}
- const cash=Accounting.cashHistory(S.tx);B.forEach(b=>{const s=cash.filter(x=>b.t(x));b.in=s.filter(x=>x.amt>0).reduce((a,x)=>a+x.amt,0);b.out=-s.filter(x=>x.amt<0).reduce((a,x)=>a+x.amt,0)});return B}
-let CB=[];
-function chart(B){CB=B;const H=120,W=400,mx=Math.max(...B.flatMap(b=>[b.in,b.out]),1),w=W/B.length;
- return `<svg viewBox="0 0 ${W} ${H+16}" width="100%" role="img" aria-label="Grafik uang masuk dan keluar">`+B.map((b,i)=>{const x=i*w+w/2,a=b.in/mx*H,c=b.out/mx*H;
-  return `<g class="bg" data-b="${i}"><rect x="${i*w}" y="0" width="${w}" height="${H+16}" fill="transparent"/><rect x="${x-13}" y="${H-a}" width="12" height="${a}" fill="var(--in)" rx="3"/><rect x="${x+1}" y="${H-c}" width="12" height="${c}" fill="var(--out)" rx="3"/><text x="${x}" y="${H+12}" text-anchor="middle">${b.l}</text></g>`}).join('')+`</svg><div id="cinfo" class="cinfo"></div>`}
-/* Detail batang: dipanggil saat kursor diarahkan (hover) atau layar disentuh (klik) */
-const showB=i=>{const b=CB[i],el=$('#cinfo');if(!b||!el)return;const u=b.in-b.out;
- document.querySelectorAll('.bg').forEach(g=>g.style.opacity=g.dataset.b==i?1:.4);
- el.innerHTML=`<div style="grid-column:1/-1"><b>${b.n||b.l}</b></div><div><small>Masuk</small><b class="in">${rp(b.in)}</b></div><div><small>Keluar</small><b class="out">${rp(b.out)}</b></div><div><small>Selisih kas</small><b class="${u>=0?'in':'out'}">${rp(u)}</b></div>`};
-const seg=()=>`<div class="seg">${['hari','minggu','bulan'].map(p=>`<button class="${per==p?'on':''}" data-per="${p}">${p}</button>`).join('')}</div>`;
-const row=x=>`<div class="row"><div>${esc(x.note||x.cat)}<div class="sub">${esc(x.who||x.cat)} · ${esc(x.date)}${x.paid?'':' · BELUM LUNAS'}</div></div><b class="${x.type}">${x.type=='in'?'+':'−'}${rp(x.amt)}</b></div>`;
-function home(){const B=buckets(),c=B[B.length-1],pu=S.tx.filter(x=>x.type=='in'&&!x.paid);
- return `<h1>Kerupuk Olikans</h1>${seg()}<div class="hero"><div class="sub">Selisih kas periode ini (bukan laba)</div><div class="big">${rp(c.in-c.out)}</div><div class="g2"><div>Masuk<br><b>${rp(c.in)}</b></div><div>Keluar<br><b>${rp(c.out)}</b></div></div></div>
- <div class="card">${chart(B)}</div>
- <h2>Piutang (${rp(pu.reduce((a,x)=>a+x.amt,0))})</h2><div class="card">${pu.map(x=>`<div class="row"><div>${esc(x.who)}<div class="sub">${esc(x.note)} · ${esc(x.date)}</div></div><div><b>${rp(x.amt)}</b> <button class="btn s" data-pay="${x.id}">Lunas</button></div></div>`).join('')||'<span class="sub">Tidak ada piutang.</span>'}</div>
- <h2>Transaksi terakhir</h2><div class="card">${S.tx.filter(x=>x.paid).slice(-6).reverse().map(row).join('')||'<span class="sub">Belum ada transaksi. Ketuk Catat.</span>'}</div>`}
-const CAT=['Bahan baku','Kemasan','Gas & listrik','Upah','Transport','Lain-lain'];
-function incomeInputs(kind){return kind==='Penjualan'?`<label>Pelanggan</label><input id="a1" placeholder="Toko Sari / Eceran"><label>Jumlah bungkus</label><input id="a2" type="number" inputmode="numeric" min="1"><label>Harga per bungkus</label><input id="a3" type="number" inputmode="numeric" min="1" value="${S.cfg.jual}"><label>Pembayaran</label><select id="a4"><option value="1">Lunas</option><option value="0">Belum bayar (piutang)</option></select>`:`<label>Nominal (Rp)</label><input id="a2" type="number" inputmode="numeric" min="1"><label>Keterangan</label><input id="a3" placeholder="Sumber penerimaan">`}
-function add(){return `<h1>Catat</h1><div class="seg"><button class="${tab=='in'?'on':''}" data-tab="in">Uang masuk</button><button class="${tab=='out'?'on':''}" data-tab="out">Uang keluar</button></div><div class="card">
- <label>Tanggal</label><input id="a0" type="date" value="${iso(new Date())}">
- ${tab=='in'?`<label>Jenis uang masuk</label><select id="income-kind"><option value="Penjualan">Penjualan kerupuk</option><option value="Setoran modal">Setoran modal pemilik</option><option value="Pinjaman diterima">Pinjaman diterima</option><option value="Pendapatan lain">Pendapatan lainnya</option></select><div id="income-inputs">${incomeInputs('Penjualan')}</div>`
- :`<label>Kategori</label><select id="a1">${CAT.map(c=>`<option>${c}</option>`).join('')}</select><label>Nominal (Rp)</label><input id="a2" type="number" inputmode="numeric"><label>Catatan</label><input id="a3">`}
- <button class="btn" data-save>Simpan</button></div>`}
-async function saveTx(){const v=i=>$('#a'+i)?.value,date=v(0),id=Date.now()*1000+Math.floor(Math.random()*1000);let tx;
- if(!date)return toast('Pilih tanggal transaksi');
- if(tab==='in'){
-  const kind=$('#income-kind')?.value||'Penjualan';
-  if(kind==='Penjualan'){
-   const q=+v(2),p=+v(3);if(!Number.isInteger(q)||q<=0||!Number.isFinite(p)||p<=0)return toast('Isi jumlah dan harga yang valid');
-   tx={id,date,type:'in',who:v(1)||'Eceran',note:'Jual '+q+' bks',amt:Math.round(q*p),cat:'Penjualan',paid:v(4)==='1',paid_at:v(4)==='1'?date:null};
-  }else{
-   const n=+v(2);if(!Number.isFinite(n)||n<=0)return toast('Nominal harus positif');
-   tx={id,date,type:'in',who:'',note:v(3)||kind,amt:Math.round(n),cat:kind,paid:true,paid_at:date};
+
+function buckets(){
+  const B=[],n=new Date();
+  if(per==='hari'){
+    const H=['Min','Sen','Sel','Rab','Kam','Jum','Sab'];
+    for(let i=6;i>=0;i--)B.push({l:i?'-'+i:'Ini',s:i?H[new Date(T0()-i*864e5).getDay()]:'Ini',n:i?dl(i):'Hari ini',t:x=>ago(x.date)===i});
   }
- }else{
-  const n=+v(2);if(!Number.isFinite(n)||n<=0)return toast('Nominal harus positif');
-  tx={id,date,type:'out',cat:v(1),note:v(3)||v(1),amt:Math.round(n),paid:true,paid_at:date};
- }
- try{await DB.addTx(tx);S.tx.push(tx);put();toast(DB.ready?'Tersimpan ke Supabase':'Tersimpan lokal');view='home';render();}
- catch(e){console.error(e);toast('Gagal menyimpan: '+(e.message||'periksa koneksi / SQL migrasi'));}
+  if(per==='minggu'){
+    for(let w=3;w>=0;w--)B.push({l:w?'-'+w+'mg':'Mg ini',n:w?w+' minggu lalu':'7 hari terakhir',t:x=>{const a=ago(x.date);return a>=w*7&&a<w*7+7}});
+  }
+  if(per==='bulan'){
+    for(let m=3;m>=0;m--){
+      const d=new Date(n.getFullYear(),n.getMonth()-m,1);
+      B.push({l:MON[d.getMonth()],n:MON[d.getMonth()]+' '+d.getFullYear(),t:x=>{const y=new Date(x.date+'T00:00');return y.getMonth()===d.getMonth()&&y.getFullYear()===d.getFullYear()}});
+    }
+  }
+  const cash=Accounting.cashHistory(S.tx);
+  B.forEach(b=>{
+    const s=cash.filter(x=>b.t(x));
+    b.in=s.filter(x=>x.amt>0).reduce((a,x)=>a+x.amt,0);
+    b.out=-s.filter(x=>x.amt<0).reduce((a,x)=>a+x.amt,0);
+  });
+  return B;
 }
-/* ===== Produksi: bahan pokok, rendemen, rencana ===== */
+
+/* ===================== GRAFIK ===================== */
+let CB=[];
+const niceMax=v=>{
+  if(v<=0)return 400000;
+  const p=Math.pow(10,Math.floor(Math.log10(v))),f=v/p;
+  return ([1,2,4,8,12].find(s=>f<=s)||12)*p;
+};
+const shortRp=v=>{
+  if(v>=1e6)return String(+(v/1e6).toFixed(2)).replace('.',',')+' jt';
+  if(v>=1e3)return String(+(v/1e3).toFixed(1)).replace('.',',')+' rb';
+  return String(Math.round(v));
+};
+const smooth=(P,lo,hi)=>{
+  if(P.length<2)return '';
+  let d=`M${P[0][0]},${P[0][1]}`;
+  for(let i=0;i<P.length-1;i++){
+    const p0=P[i-1]||P[i],p1=P[i],p2=P[i+1],p3=P[i+2]||p2;
+    const c1y=Math.min(hi,Math.max(lo,p1[1]+(p2[1]-p0[1])/6));
+    const c2y=Math.min(hi,Math.max(lo,p2[1]-(p3[1]-p1[1])/6));
+    d+=` C${p1[0]+(p2[0]-p0[0])/6},${c1y} ${p2[0]-(p3[0]-p1[0])/6},${c2y} ${p2[0]},${p2[1]}`;
+  }
+  return d;
+};
+
+function chartSvg(B){
+  const box=$('#app');
+  const W=Math.max(260,(box?box.clientWidth:window.innerWidth)-58);
+  const T=14,H=180,Bt=30,L=46,R=8,SH=T+H+Bt,base=T+H,pw=W-L-R,n=B.length,bw=pw/n;
+  const mx=niceMax(Math.max(...B.flatMap(b=>[b.in,b.out]),0));
+  const X=i=>L+bw*i+bw/2,Y=v=>base-v/mx*H;
+  const pin=B.map((b,i)=>[X(i),Y(b.in)]),pout=B.map((b,i)=>[X(i),Y(b.out)]);
+  const lin=smooth(pin,T,base),lout=smooth(pout,T,base);
+  const area=(d,P)=>d+` L${P[P.length-1][0]},${base} L${P[0][0]},${base} Z`;
+  const none=B.every(b=>!b.in&&!b.out);
+  const grid=[0,1,2,3,4].map(k=>{
+    const v=mx*k/4,y=Y(v);
+    return `<line x1="${L}" x2="${W-R}" y1="${y}" y2="${y}" stroke="var(--line)" ${k?'stroke-dasharray="3 4"':''}/><text x="${L-8}" y="${y+4}" text-anchor="end">${shortRp(v)}</text>`;
+  }).join('');
+  return `
+  <svg viewBox="0 0 ${W} ${SH}" width="100%" role="img" aria-label="Grafik uang masuk dan keluar">
+    <defs>
+      <linearGradient id="gIn" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--sea);stop-opacity:.28"/><stop offset="1" style="stop-color:var(--sea);stop-opacity:0"/></linearGradient>
+    </defs>
+    ${grid}
+    <path d="${area(lin,pin)}" fill="url(#gIn)"/>
+    <path class="ln" pathLength="1" d="${lout}" fill="none" style="stroke:var(--out)" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="1"/>
+    <path class="ln" pathLength="1" d="${lin}" fill="none" style="stroke:var(--sea)" stroke-width="3" stroke-linecap="round"/>
+    ${none?`<text class="empty" x="${L+pw/2}" y="${T+H/2}" text-anchor="middle">Belum ada data kas pada periode ini</text>`:''}
+    ${B.map((b,i)=>`
+      <g class="bg" data-b="${i}" tabindex="0" role="button" aria-label="${esc(b.n||b.l)}">
+        <rect x="${L+bw*i}" y="0" width="${bw}" height="${SH}" fill="transparent"/>
+        <line class="cguide" x1="${X(i)}" x2="${X(i)}" y1="${T}" y2="${base}"/>
+        <circle class="pt" cx="${X(i)}" cy="${Y(b.in)}" r="3" style="fill:var(--sea)"/>
+        <circle class="pt" cx="${X(i)}" cy="${Y(b.out)}" r="3" style="fill:var(--out)"/>
+        <circle class="cdot" cx="${X(i)}" cy="${Y(b.in)}" r="5" style="stroke:var(--sea)"/>
+        <circle class="cdot" cx="${X(i)}" cy="${Y(b.out)}" r="5" style="stroke:var(--out)"/>
+        <text x="${X(i)}" y="${base+20}" text-anchor="middle">${esc(b.s||b.l)}</text>
+      </g>`).join('')}
+  </svg>`;
+}
+
+function chart(B){
+  CB=B;
+  return `<div class="chart">
+    <div class="legend"><span><i style="background:var(--sea)"></i>Masuk</span><span><i style="background:var(--out)"></i>Keluar</span></div>
+    <div id="chartbox">${chartSvg(B)}</div>
+    <div id="cinfo" class="cinfo"></div>
+  </div>`;
+}
+
+const showB=i=>{
+  const b=CB[i],el=$('#cinfo');
+  if(!b||!el)return;
+  const u=b.in-b.out;
+  document.querySelectorAll('.bg').forEach(g=>g.classList.toggle('sel',g.dataset.b==i));
+  el.innerHTML=`
+    <div style="grid-column:1/-1"><b>${esc(b.n||b.l)}</b></div>
+    <div><small>Masuk</small><b class="in">${rp(b.in)}</b></div>
+    <div><small>Keluar</small><b class="out">${rp(b.out)}</b></div>
+    <div><small>Selisih kas</small><b class="${u>=0?'in':'out'}">${rp(u)}</b></div>`;
+};
+
+const seg=()=>`<div class="tabs">${['hari','minggu','bulan'].map(p=>`<button class="${per===p?'on':''}" data-per="${p}">${p}</button>`).join('')}</div>`;
+
+const row=x=>`
+  <div class="row">
+    <div>${esc(x.note||x.cat)}
+      <div class="sub">${esc(x.who||x.cat)} · ${esc(x.date)}${x.paid?'':' · BELUM LUNAS'}</div></div>
+    <b class="${x.type==='in'?'in':'out'}">${x.type==='in'?'+':'−'} ${rp(x.amt)}</b>
+  </div>`;
+
+/* ===================== STATUS PESANAN ===================== */
+const statusLabel={NEW:'Baru',CONFIRMED:'Dikonfirmasi',PROCESSING:'Diproses',READY_TO_SHIP:'Siap dikirim',SHIPPED:'Dikirim',COMPLETED:'Selesai',CANCELLED:'Batal'};
+const statusNext={NEW:'CONFIRMED',CONFIRMED:'PROCESSING',PROCESSING:'READY_TO_SHIP',READY_TO_SHIP:'SHIPPED',SHIPPED:'COMPLETED'};
+
+/* ===================== BERANDA ===================== */
+const NON_SALES=['Setoran modal','Pinjaman diterima','Pendapatan lain'];
+const salesOn=d=>S.tx.filter(x=>x.type==='in'&&!NON_SALES.includes(x.cat)&&ago(x.date)===d).reduce((a,x)=>a+x.amt,0);
+function greeting(){const h=new Date().getHours();return h<11?'Selamat pagi':h<15?'Selamat siang':h<18?'Selamat sore':'Selamat malam'}
+
+function home(){
+  const B=buckets(),c=B[B.length-1];
+  const pu=S.tx.filter(x=>x.type==='in'&&!x.paid);
+  const puTotal=pu.reduce((a,x)=>a+x.amt,0);
+  const puWho=new Set(pu.map(x=>x.who||'-')).size;
+  const s0=salesOn(0),s1=salesOn(1);
+  let trend;
+  if(s1>0){
+    const pct=Math.round((s0-s1)/s1*100);
+    trend=pct>=0?`<span class="up">↑ ${pct}%</span> dari kemarin`:`<span class="down">↓ ${Math.abs(pct)}%</span> dari kemarin`;
+  }else trend=s0>0?'Belum ada penjualan kemarin':'Belum ada penjualan hari ini';
+
+  const allOrders=S.orders||[];
+  const active=allOrders.filter(o=>!['COMPLETED','CANCELLED'].includes(o.status));
+  const todo=active.filter(o=>['NEW','CONFIRMED'].includes(o.status)).length;
+  const low=(S.products||[]).filter(p=>p.active!==false&&Number(p.stock||0)<=5).sort((a,b)=>Number(a.stock||0)-Number(b.stock||0));
+  const recent=allOrders.slice().sort((a,b)=>String(b.created_at||'').localeCompare(String(a.created_at||''))).slice(0,4);
+  const tgl=new Date().toLocaleDateString('id-ID',{weekday:'long',day:'numeric',month:'long'});
+
+  return `
+  <div class="brand">
+    <div class="logo">O</div>
+    <div><b>Kerupuk Olikans</b><span>${tgl}</span></div>
+    ${syncing&&DB.on?'<div class="sync"><i></i>Menyinkronkan…</div>':''}
+  </div>
+
+  <div class="greet"><h1>${greeting()}, selamat bekerja</h1><p>Pantau penjualan, pesanan, dan stok Olikans hari ini.</p></div>
+
+  <div class="kpis">
+    <div class="kpi k-sales"><div class="lbl">${ic('coin',16)} Penjualan Hari Ini</div><div class="val">${rp(s0)}</div><div class="note">${trend}</div></div>
+    <div class="kpi" data-v="orders"><div class="lbl">${ic('cart',16)} Pesanan Aktif</div><div class="val">${active.length} pesanan</div><div class="note">${todo?todo+' perlu diproses':'Tidak ada yang menunggu'}</div></div>
+    <div class="kpi ${low.length?'k-warn':''}" data-v="products"><div class="lbl">${ic('box',16)} Stok Menipis</div><div class="val">${low.length} produk</div><div class="note">${low.length?'Perlu perhatian':'Stok aman'}</div></div>
+    <div class="kpi ${pu.length?'k-danger':''}"><div class="lbl">${ic('receipt',16)} Piutang</div><div class="val">${rp(puTotal)}</div><div class="note">${pu.length?puWho+' pelanggan belum bayar':'Tidak ada piutang'}</div></div>
+  </div>
+
+  <div class="sec-head"><h2>Aksi Cepat</h2></div>
+  <div class="qa">
+    <button class="cta" data-qa="order">${ic('plus',18)} Pesanan Baru</button>
+    <button class="pri" data-qa="prod">${ic('fac',18)} Catat Produksi</button>
+    <button class="pri" data-qa="expense">${ic('wallet',18)} Catat Pengeluaran</button>
+    <button class="pri" data-v="products">${ic('box',18)} Produk &amp; Stok</button>
+  </div>
+
+  <div class="sec-head"><h2>Pesanan Terbaru</h2><button data-v="orders">Lihat semua</button></div>
+  <div class="card">
+    ${recent.map(o=>`
+      <div class="row">
+        <div><b>${esc(o.order_number)}</b><div class="sub">${esc(o.customer_name||'Tanpa nama')} · ${esc(o.source)}</div></div>
+        <div style="text-align:right"><b>${rp(+o.total||0)}</b><div><span class="badge b-${esc(o.status)}">${esc(statusLabel[o.status]||o.status)}</span></div></div>
+      </div>`).join('')||'<span class="sub">Belum ada pesanan. Ketuk + Pesanan Baru.</span>'}
+  </div>
+
+  <div class="sec-head"><h2>Peringatan Stok</h2><button data-v="products">Kelola produk</button></div>
+  <div class="card">
+    ${low.map(p=>{
+      const st=Number(p.stock||0);
+      return `<div class="row" style="align-items:center">
+        <div><b>${esc(p.name)}</b><div class="sub">SKU: ${esc(p.sku||'-')}</div></div>
+        <div style="display:flex;gap:8px;align-items:center">
+          <span class="stock-pill ${st<=0?'zero':''}">${st<=0?'Habis':st+' pcs'}</span>
+          <button class="btn s" data-v="products">Lihat Produk</button>
+        </div></div>`}).join('')||'<span class="sub">Semua stok aman</span>'}
+  </div>
+
+  <div class="sec-head"><h2>Ringkasan Kas</h2></div>
+  ${seg()}
+  <div class="hero">
+    <div class="sub">Selisih kas periode ini (uang masuk dikurangi keluar, bukan laba)</div>
+    <div class="big">${rp(c.in-c.out)}</div>
+    <div class="g2" style="margin-top:6px">
+      <div><span class="sub">Masuk</span><br><b class="in">${rp(c.in)}</b></div>
+      <div><span class="sub">Keluar</span><br><b class="out">${rp(c.out)}</b></div>
+    </div>
+  </div>
+  <div class="card">${chart(B)}</div>
+
+  <div class="card"><details ${pu.length?'open':''}>
+    <summary>Piutang · ${rp(puTotal)}</summary>
+    <div class="sub">Piutang = penjualan yang belum dibayar pelanggan.</div>
+    ${pu.map(x=>`
+      <div class="row">
+        <div>${esc(x.who)}<div class="sub">${esc(x.note)} · ${esc(x.date)}</div></div>
+        <div><b>${rp(x.amt)}</b> <button class="btn s" data-pay="${esc(x.id)}">Lunas</button></div>
+      </div>`).join('')||'<span class="sub">Tidak ada piutang.</span>'}
+  </details></div>
+
+  <div class="card"><details>
+    <summary>Transaksi terakhir</summary>
+    ${S.tx.filter(x=>x.paid).slice(-6).reverse().map(row).join('')||'<span class="sub">Belum ada transaksi. Ketuk + Transaksi.</span>'}
+  </details></div>`;
+}
+
+/* ===================== KEUANGAN ===================== */
+const CAT=['Bahan baku','Kemasan','Gas & listrik','Upah','Transport','Peralatan','Pemeliharaan','Lain-lain'];
+
+function incomeInputs(kind){
+  const ph=kind==='Setoran modal'?'Contoh: Tambahan modal pemilik':kind==='Pinjaman diterima'?'Contoh: Pinjaman usaha':'Contoh: Pendapatan di luar penjualan produk';
+  return `
+    <label>Nominal (Rp)</label><input id="a2" type="number" inputmode="numeric" min="1" placeholder="0">
+    <label>Keterangan</label><input id="a3" placeholder="${ph}">`;
+}
+
+function add(){
+  const totalIn=S.tx.filter(x=>x.type==='in'&&x.paid).reduce((a,x)=>a+(+x.amt||0),0);
+  const totalOut=S.tx.filter(x=>x.type==='out'&&x.paid).reduce((a,x)=>a+(+x.amt||0),0);
+  return `
+  <h1>Keuangan</h1>
+  <div class="hero">
+    <div class="sub">Saldo berdasarkan seluruh transaksi tercatat</div>
+    <div class="big">${rp(totalIn-totalOut)}</div>
+    <div class="g2" style="margin-top:10px">
+      <div><span class="sub">Total Masuk</span><br><b class="in">${rp(totalIn)}</b></div>
+      <div><span class="sub">Total Keluar</span><br><b class="out">${rp(totalOut)}</b></div>
+    </div>
+  </div>
+  <div class="notice"><b>Penjualan tidak perlu dicatat di menu Keuangan.</b><br>Pendapatan penjualan dicatat melalui <b>Pesanan</b> agar transaksi tidak tercatat dua kali.</div>
+  <div class="pills">
+    <button class="${tab==='out'?'on':''}" data-tab="out">Pengeluaran</button>
+    <button class="${tab==='in'?'on':''}" data-tab="in">Penerimaan Lain</button>
+  </div>
+  <div class="card">
+    <label>Tanggal</label><input id="a0" type="date" value="${iso(new Date())}">
+    ${tab==='in'?`
+      <label>Jenis penerimaan</label>
+      <select id="income-kind">
+        <option value="Setoran modal">Modal masuk</option>
+        <option value="Pinjaman diterima">Pinjaman diterima</option>
+        <option value="Pendapatan lain">Pendapatan lainnya</option>
+      </select>
+      <div id="income-inputs">${incomeInputs('Setoran modal')}</div>`
+    :`
+      <label>Kategori pengeluaran</label>
+      <select id="a1">${CAT.map(c=>`<option value="${esc(c)}">${esc(c)}</option>`).join('')}</select>
+      <label>Nominal (Rp)</label><input id="a2" type="number" inputmode="numeric" min="1" placeholder="0">
+      <label>Catatan</label><input id="a3" placeholder="Contoh: Pembelian ikan 10 kg">`}
+    <button class="btn" data-save>${tab==='out'?'Simpan Pengeluaran':'Simpan Penerimaan'}</button>
+  </div>
+  <h2>Transaksi Terakhir</h2>
+  <div class="card">${S.tx.slice().reverse().slice(0,10).map(row).join('')||'<span class="sub">Belum ada transaksi keuangan.</span>'}</div>`;
+}
+
+async function saveTx(){
+  const v=i=>$('#a'+i)?.value,date=v(0),id=Date.now()*1000+Math.floor(Math.random()*1000);
+  if(!date)return toast('Pilih tanggal transaksi');
+  let tx;
+  if(tab==='in'){
+    const kind=$('#income-kind')?.value||'Setoran modal',n=Number(v(2));
+    if(!Number.isFinite(n)||n<=0)return toast('Nominal penerimaan harus lebih dari 0');
+    tx={id,date,type:'in',who:'',note:v(3)||kind,amt:Math.round(n),cat:kind,paid:true,paid_at:date};
+  }else{
+    const n=Number(v(2));
+    if(!Number.isFinite(n)||n<=0)return toast('Nominal pengeluaran harus lebih dari 0');
+    tx={id,date,type:'out',cat:v(1)||'Lain-lain',note:v(3)||v(1)||'Pengeluaran',amt:Math.round(n),paid:true,paid_at:date};
+  }
+  try{
+    await DB.addTx(tx);S.tx.push(tx);put();
+    toast(DB.ready?'Tersimpan ke Supabase':'Tersimpan lokal');render();
+  }catch(e){console.error(e);toast('Gagal menyimpan: '+(e.message||'periksa koneksi'))}
+}
+
+/* ===================== PRODUK ===================== */
+function productForm(){
+  const x=productEdit&&productEdit!=='NEW'?S.products.find(p=>String(p.id)===String(productEdit)):null;
+  return `
+  <h1>${x?'Edit':'Tambah'} Produk</h1>
+  <div class="card">
+    <label>Nama produk</label><input id="p-name" value="${esc(x?.name||'')}" placeholder="Kerupuk Tenggiri 250g">
+    <label>SKU</label><input id="p-sku" value="${esc(x?.sku||'')}" placeholder="OLK-T250">
+    <div class="sub">Satu varian produk menggunakan satu SKU. SKU tidak perlu dibuat ulang setiap hari.</div>
+    <label>Kategori</label><input id="p-category" value="${esc(x?.category||'Kerupuk Ikan')}" placeholder="Kerupuk Ikan">
+    <label>Berat (gram)</label><input id="p-weight" type="number" min="0" inputmode="decimal" value="${+(x?.weight_grams||250)}">
+    <label>Harga jual (Rp)</label><input id="p-price" type="number" min="0" inputmode="numeric" value="${x?+x.selling_price||'':''}">
+    <label>HPP / modal per produk (Rp)</label><input id="p-cost" type="number" min="0" inputmode="numeric" value="${x?+x.cost_price||'':''}">
+    <div class="sub">HPP = biaya yang dikeluarkan untuk membuat satu produk.</div>
+    ${x?`
+      <label>Stok saat ini</label>
+      <div class="res"><b>${Number(x.stock||0).toLocaleString('id-ID')} pcs</b>
+      <div class="sub">Untuk koreksi stok fisik, gunakan tombol Penyesuaian Stok di halaman produk.</div></div>`
+    :`
+      <label>Stok awal (pcs)</label><input id="p-stock" type="number" min="0" inputmode="numeric" value="0">`}
+    <label>Status</label>
+    <select id="p-active">
+      <option value="1" ${x?.active!==false?'selected':''}>Aktif</option>
+      <option value="0" ${x?.active===false?'selected':''}>Nonaktif</option>
+    </select>
+    <button class="btn" data-product-save>${x?'Simpan perubahan':'Simpan produk'}</button>
+    <button class="btn ghost" data-product-cancel>Batal</button>
+  </div>`;
+}
+
+function stockForm(){
+  const p=(S.products||[]).find(x=>String(x.id)===String(stockEdit));
+  if(!p){stockEdit=null;return products()}
+  const cur=Number(p.stock||0);
+  return `
+  <h1>Penyesuaian Stok</h1>
+  <div class="notice"><b>Gunakan fitur ini hanya untuk koreksi stok.</b><br>Hasil produksi baru harus dicatat melalui menu <b>Produksi</b>.</div>
+  <div class="card">
+    <div class="row"><div><b>${esc(p.name)}</b><div class="sub">SKU: ${esc(p.sku||'-')}</div></div><div style="text-align:right"><div class="sub">Stok sekarang</div><b>${cur.toLocaleString('id-ID')} pcs</b></div></div>
+    <label>Alasan penyesuaian</label>
+    <select id="stock-reason">
+      <option value="Stock opname">Stock opname</option><option value="Barang rusak">Barang rusak</option><option value="Barang hilang">Barang hilang</option><option value="Retur">Retur barang</option><option value="Koreksi pencatatan">Koreksi pencatatan</option><option value="Lainnya">Lainnya</option>
+    </select>
+    <label>Perubahan jumlah stok</label><input id="stock-change" type="number" inputmode="numeric" placeholder="Contoh: -2 atau 5">
+    <div class="sub" style="margin-top:6px">Angka positif menambah stok, angka negatif mengurangi stok.</div>
+    <div class="res" id="stock-preview">Stok setelah perubahan: <b>${cur.toLocaleString('id-ID')} pcs</b></div>
+    <button class="btn" data-stock-save>Simpan Penyesuaian</button><button class="btn ghost" data-stock-cancel>Batal</button>
+  </div>`;
+}
+
+function products(){
+  if(stockEdit)return stockForm();
+  if(productEdit)return productForm();
+  const list=(S.products||[]).slice().sort((a,b)=>String(a.name).localeCompare(String(b.name)));
+  return `
+  <h1>Produk</h1>
+  <div class="card">
+    <b>Master produk Olikans</b>
+    <div class="sub">Satu SKU untuk satu varian produk. Penambahan stok tidak membuat SKU atau produk baru.</div>
+    <button class="btn cta" data-product-new>+ Tambah Produk</button>
+  </div>
+  ${!DB.ready&&DB.on?'<div class="notice">Silakan login agar master produk tersimpan di Supabase.</div>':''}
+  ${list.map(p=>`
+    <div class="card">
+      <div class="row">
+        <div><b>${esc(p.name)}</b>
+          <div class="sub">SKU: <b>${esc(p.sku||'-')}</b></div>
+          <div class="sub">${esc(p.category||'Tanpa kategori')} · ${Number(p.weight_grams||0).toLocaleString('id-ID')} g</div></div>
+        <div style="text-align:right"><b>${rp(+p.selling_price||0)}</b><div class="sub">${p.active===false?'Nonaktif':'Aktif'}</div></div>
+      </div>
+      <div class="g2">
+        <div><span class="sub">Stok</span><br><b style="font-size:20px">${Number(p.stock||0).toLocaleString('id-ID')} pcs</b></div>
+        <div><span class="sub">HPP (modal)</span><br><b>${rp(+p.cost_price||0)}</b></div>
+      </div>
+      <div style="display:flex;gap:8px;margin-top:12px">
+        <button class="btn s cta" style="flex:1" data-stock-edit="${esc(p.id)}">Penyesuaian Stok</button>
+        <button class="btn s" style="flex:1" data-product-edit="${esc(p.id)}">Edit Produk</button>
+      </div>
+    </div>`).join('')||'<div class="card"><span class="sub">Belum ada produk. Tambahkan produk pertama Olikans.</span></div>'}`;
+}
+
+async function saveProduct(){
+  const name=$('#p-name').value.trim(),sku=$('#p-sku').value.trim().toUpperCase();
+  const price=+$('#p-price').value,cost=+$('#p-cost').value,weight=+$('#p-weight').value;
+  const active=$('#p-active').value==='1';
+  if(!name||!sku)return toast('Nama produk dan SKU wajib diisi');
+  if([price,cost,weight].some(n=>!Number.isFinite(n)||n<0))return toast('Harga, HPP, dan berat harus valid');
+  if(!DB.ready)return toast('Silakan login terlebih dahulu');
+  const data={name,sku,category:$('#p-category').value.trim(),weight_grams:weight,selling_price:Math.round(price),cost_price:Math.round(cost),active};
+  try{
+    if(productEdit&&productEdit!=='NEW'){
+      const i=S.products.findIndex(p=>String(p.id)===String(productEdit));
+      const old=S.products[i];
+      const saved=await DB.updateProduct(productEdit,data);
+      S.products[i]=saved||{...old,...data};
+    }else{
+      const stock=+$('#p-stock').value;
+      if(!Number.isFinite(stock)||stock<0)return toast('Stok awal harus valid');
+      data.stock=stock;
+      const saved=await DB.addProduct(data);
+      S.products.push(saved||{...data,id:'local-'+Date.now()});
+    }
+    put();productEdit=null;toast('Produk tersimpan');window.scrollTo(0,0);render();
+  }catch(e){console.error(e);toast('Gagal menyimpan produk: '+e.message)}
+}
+
+async function saveStock(){
+  if(!stockEdit)return;
+  if(!DB.ready)return toast('Silakan login terlebih dahulu');
+  const p=S.products.find(x=>String(x.id)===String(stockEdit));
+  if(!p)return toast('Produk tidak ditemukan');
+  const qty=Number($('#stock-change')?.value);
+  const note=$('#stock-reason')?.value||'Penyesuaian stok';
+  if(!Number.isFinite(qty)||qty===0)return toast('Masukkan perubahan stok, contoh 50 atau -5');
+  if(Number(p.stock||0)+qty<0)return toast('Stok tidak boleh menjadi negatif');
+  try{
+    const newStock=await DB.adjustStock(p.id,qty,note);
+    p.stock=Number(newStock);put();stockEdit=null;
+    const fresh=await DB.pull();
+    if(fresh){S=fresh;put()}
+    toast(qty>0?'Stok berhasil ditambahkan':'Koreksi stok berhasil');
+    window.scrollTo(0,0);render();
+  }catch(e){console.error(e);toast('Gagal memperbarui stok: '+e.message)}
+}
+
+/* ===================== PESANAN ===================== */
+function orderNo(){
+  const ymd=new Date().toISOString().slice(0,10).replaceAll('-','');
+  return 'OLK-'+ymd+'-'+String(Date.now()).slice(-5);
+}
+const draftProduct=x=>(S.products||[]).find(p=>String(p.id)===String(x.product_id));
+
+function orderTotals(){
+  let subtotal=0;
+  for(const x of orderDraft){const p=draftProduct(x);if(p)subtotal+=(+p.selling_price||0)*(+x.quantity||0)}
+  const ship=+($('#o-ship')?.value||0),disc=+($('#o-disc')?.value||0);
+  return {subtotal,ship,disc,total:Math.max(0,subtotal+ship-disc)};
+}
+
+function orderItemInfo(x){
+  const p=draftProduct(x);
+  if(!p)return '<div class="sub" style="margin-top:8px">Pilih produk untuk melihat SKU, stok, dan harga.</div>';
+  const stock=Number(p.stock||0),qty=Number(x.quantity||1),subtotal=qty*Number(p.selling_price||0);
+  return `<div class="g2" style="margin-top:10px">
+    <div class="res"><span class="sub">SKU</span><br><b>${esc(p.sku||'-')}</b></div>
+    <div class="res"><span class="sub">Stok tersedia</span><br><b class="${stock<=5?'out':'in'}">${stock.toLocaleString('id-ID')} pcs</b></div>
+    <div class="res"><span class="sub">Harga</span><br><b>${rp(+p.selling_price||0)}</b></div>
+    <div class="res"><span class="sub">Subtotal</span><br><b>${rp(subtotal)}</b></div>
+  </div>`;
+}
+
+function orderTotalHTML(){
+  const t=orderTotals();
+  return `
+    <div class="row"><span>Subtotal</span><b>${rp(t.subtotal)}</b></div>
+    <div class="row"><span>Ongkir</span><b>${rp(t.ship)}</b></div>
+    <div class="row"><span>Diskon</span><b>− ${rp(t.disc)}</b></div>
+    <div class="row" style="font-size:18px"><b>Total</b><b class="in">${rp(t.total)}</b></div>`;
+}
+const refreshOrderTotal=()=>{const el=$('#order-total');if(el)el.innerHTML=orderTotalHTML()};
+
+function orderForm(){
+  if(!orderDraft.length)orderDraft=[emptyItem()];
+  const act=(S.products||[]).filter(p=>p.active!==false);
+  return `
+  <h1>Pesanan Baru</h1>
+  <div class="card">
+    <label>Sumber pesanan</label>
+    <select id="o-source"><option>Manual</option><option>WhatsApp</option><option>Shopee</option><option>Tokopedia</option><option>TikTok Shop</option><option>Website</option><option>Lainnya</option></select>
+    <label>Nomor pesanan marketplace (opsional)</label><input id="o-market" placeholder="Contoh: SHP-123456">
+    <label>Nama pelanggan</label><input id="o-customer" placeholder="Nama pembeli">
+    <label>No. HP (opsional)</label><input id="o-phone" placeholder="08xxxxxxxxxx" inputmode="tel">
+  </div>
+
+  <div class="card">
+    <b>Produk pesanan</b>
+    <div class="sub">Pilih produk saja. SKU, stok, dan harga akan muncul otomatis.</div>
+    ${orderDraft.map((x,i)=>{
+      const sel=draftProduct(x),stock=sel?Number(sel.stock||0):'';
+      const opts=act.map(p=>`<option value="${esc(p.id)}" ${String(p.id)===String(x.product_id)?'selected':''}>${esc(p.name)} · stok ${Number(p.stock||0)} · ${rp(+p.selling_price||0)}</option>`).join('');
+      return `
+      <div class="res" style="margin-top:12px">
+        <label style="margin-top:0">Produk ${i+1}</label>
+        <select data-order-product="${i}"><option value="">Pilih produk</option>${opts}</select>
+        <div id="order-info-${i}">${orderItemInfo(x)}</div>
+        <label>Jumlah</label>
+        <input type="number" min="1" ${stock!==''?`max="${stock}"`:''} value="${+x.quantity||1}" data-order-qty="${i}">
+        ${sel?`<div class="sub" style="margin-top:5px">Maksimal berdasarkan stok: <b>${Number(sel.stock||0)} pcs</b></div>`:''}
+        ${orderDraft.length>1?`<button class="btn s danger" style="margin-top:8px" data-order-remove="${i}">Hapus produk</button>`:''}
+      </div>`}).join('')}
+    <button class="btn cta" data-order-add>+ Tambah produk lain</button>
+  </div>
+
+  <div class="card">
+    <label style="margin-top:0">Ongkir (Rp)</label><input id="o-ship" type="number" min="0" value="0">
+    <label>Diskon (Rp)</label><input id="o-disc" type="number" min="0" value="0">
+    <label>Pembayaran</label>
+    <select id="o-pay"><option value="UNPAID">Belum dibayar</option><option value="PAID">Lunas</option></select>
+    <label>Catatan</label><input id="o-notes" placeholder="Catatan pesanan">
+    <div class="res" id="order-total">${orderTotalHTML()}</div>
+    <button class="btn" data-order-save>Simpan pesanan</button>
+    <button class="btn ghost" data-order-cancel>Batal</button>
+  </div>`;
+}
+
+function orders(){
+  if(orderEdit==='NEW')return orderForm();
+  const O=(S.orders||[]).slice().sort((a,b)=>String(b.created_at||'').localeCompare(String(a.created_at||'')));
+  return `
+  <h1>Pesanan</h1>
+  <div class="card">
+    <b>Order Management Olikans</b>
+    <div class="sub">Pesanan manual dan marketplace dicatat di satu tempat.</div>
+    <button class="btn cta" data-order-new>+ Pesanan baru</button>
+  </div>
+  ${O.map(o=>{
+    const its=(S.orderItems||[]).filter(i=>String(i.order_id)===String(o.id));
+    const n=statusNext[o.status];
+    return `
+    <div class="card">
+      <div class="row">
+        <div><b>${esc(o.order_number)}</b><div class="sub">${esc(o.source)} · ${esc(o.customer_name||'Tanpa nama')} · ${esc(o.order_date)}</div></div>
+        <div style="text-align:right"><b>${rp(+o.total||0)}</b><div><span class="badge b-${esc(o.status)}">${esc(statusLabel[o.status]||o.status)}</span></div></div>
+      </div>
+      ${its.map(i=>`<div class="sub" style="padding:5px 0"><b>${+i.quantity} × ${esc(i.product_name)}</b><br>SKU: ${esc(i.sku||'-')} · ${rp(+i.subtotal||0)}</div>`).join('')}
+      <div class="sub" style="margin-top:8px">Pembayaran: ${o.payment_status==='PAID'?'Lunas':'Belum dibayar'}${o.tracking_number?' · Resi '+esc(o.tracking_number):''}</div>
+      <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">
+        ${n?`<button class="btn s" data-order-next="${esc(o.id)}" data-next="${n}">${n==='COMPLETED'?'Selesaikan pesanan':esc(statusLabel[n])}</button>`:''}
+        ${!['COMPLETED','CANCELLED'].includes(o.status)?`<button class="btn s ghost" data-order-cancel-id="${esc(o.id)}">Batalkan</button>`:''}
+      </div>
+    </div>`}).join('')||'<div class="card"><span class="sub">Belum ada pesanan.</span></div>'}`;
+}
+
+async function saveOrder(){
+  if(!DB.ready)return toast('Silakan login terlebih dahulu');
+  const customer=$('#o-customer').value.trim(),source=$('#o-source').value;
+  if(!customer)return toast('Nama pelanggan wajib diisi');
+  const items=[],used=new Set();
+  for(const x of orderDraft){
+    const p=draftProduct(x);
+    if(!p)return toast('Masih ada produk yang belum dipilih');
+    const key=String(p.id);
+    if(used.has(key))return toast(p.name+' sudah dimasukkan. Cukup masukkan satu kali lalu ubah jumlahnya.');
+    used.add(key);
+    const q=Number(x.quantity);
+    if(!Number.isInteger(q)||q<=0)return toast('Jumlah '+p.name+' harus berupa angka bulat positif');
+    const stock=Number(p.stock||0);
+    if(stock<=0)return toast(p.name+' sedang kehabisan stok');
+    if(q>stock)return toast('Stok '+p.name+' tidak mencukupi. Tersedia '+stock+' pcs, tetapi diminta '+q+' pcs.');
+    items.push({product_id:p.id,product_name:p.name,sku:p.sku,quantity:q,unit_price:+p.selling_price||0,subtotal:q*(+p.selling_price||0)});
+  }
+  if(!items.length)return toast('Pilih minimal satu produk');
+  try{
+    const phone=$('#o-phone').value.trim();
+    const cust=await DB.addCustomer({name:customer,phone:phone||null});
+    const subtotal=items.reduce((a,b)=>a+b.subtotal,0);
+    const shipping_cost=+$('#o-ship').value||0,discount=+$('#o-disc').value||0;
+    const o={
+      order_number:orderNo(),source,
+      marketplace_order_id:$('#o-market').value.trim()||null,
+      customer_id:cust?.id||null,customer_name:customer,
+      order_date:iso(new Date()),status:'NEW',payment_status:$('#o-pay').value,
+      subtotal,shipping_cost,discount,
+      total:Math.max(0,subtotal+shipping_cost-discount),
+      notes:$('#o-notes').value.trim()||null
+    };
+    await DB.createOrder(o,items);
+    const d=await DB.pull();
+    if(d)S=d;
+    put();orderEdit=null;orderDraft=[emptyItem()];
+    toast('Pesanan tersimpan');window.scrollTo(0,0);render();
+  }catch(e){console.error(e);toast('Gagal menyimpan pesanan: '+e.message)}
+}
+
+async function advanceOrder(id,next){
+  const o=S.orders.find(x=>String(x.id)===String(id));
+  const its=S.orderItems.filter(x=>String(x.order_id)===String(id));
+  if(!o)return;
+  if(next==='CANCELLED'&&!confirm('Batalkan pesanan '+o.order_number+'? Tindakan ini tidak bisa diurungkan.'))return;
+  try{
+    if(next==='COMPLETED'){
+      await DB.completeOrder(o,its);
+      toast('Pesanan selesai, stok & transaksi diperbarui');
+    }else{
+      await DB.updateOrder(id,{status:next});
+      toast(next==='CANCELLED'?'Pesanan dibatalkan':'Status pesanan diperbarui');
+    }
+    const d=await DB.pull();
+    if(d)S=d;
+    put();render();
+  }catch(e){console.error(e);toast('Gagal: '+e.message)}
+}
+
+/* ===================== LAINNYA ===================== */
+function more(){
+  return `
+  <h1>Lainnya</h1>
+  <h2>Kelola Usaha</h2>
+  <div class="card">
+   <button class="btn" data-v="products">${ic('box',18)} Produk &amp; Stok</button>
+
+<button class="btn" data-v="analysis">${ic('fac',18)} Analisis Produksi</button>
+
+<button class="btn" data-v="akuntansi">${ic('book',18)} Laporan Usaha</button>
+  </div>
+  <h2>Pengaturan</h2>
+  <div class="card">
+    <button class="btn" data-v="prod-settings">${ic('fac',18)} Pengaturan Produksi</button>
+    <button class="btn" data-v="akun">${ic('user',18)} Akun &amp; Data</button>
+  </div>
+  <h2>Marketplace</h2>
+  <div class="card"><b>Sumber Pesanan Marketplace</b><div class="sub" style="margin-top:8px">Shopee, Tokopedia, TikTok Shop, website, dan penjualan langsung saat ini digunakan sebagai <b>sumber pencatatan pesanan</b>. Data belum otomatis tersinkron dari marketplace kecuali integrasi API diaktifkan.</div></div>
+  <h2>Alur Olikans</h2>
+  <div class="card">
+    <div class="row"><div><b>1. Produksi</b><div class="sub">Catat hasil produksi</div></div><b class="in">Stok +</b></div>
+    <div class="row"><div><b>2. Pesanan</b><div class="sub">Catat penjualan produk</div></div><b>Penjualan</b></div>
+    <div class="row"><div><b>3. Pesanan selesai</b><div class="sub">Sistem memperbarui data</div></div><b class="out">Stok −</b></div>
+    <div class="row"><div><b>4. Keuangan</b><div class="sub">Biaya, modal, pinjaman, penerimaan lain</div></div><b>Kas</b></div>
+    <div class="row"><div><b>5. Laporan</b><div class="sub">Membaca data aktivitas sebelumnya</div></div><b>Otomatis</b></div>
+  </div>`;
+}
+
+/* ===================== PRODUKSI ===================== */
 const sum=(a,f)=>a.reduce((s,x)=>s+f(x),0);
-function eff(){const B=S.batch,c=S.cfg;if(!B.length)return{rend:c.rend,share:c.share,src:'perkiraan awal (belum ada data produksi)',n:0};
- const bahan=sum(B,b=>b.ikan+b.tap);return{rend:sum(B,b=>b.out)/bahan*100,share:sum(B,b=>b.ikan)/bahan*100,src:'rata-rata dari '+B.length+' produksi Anda',n:B.length}}
-function plan(N){const c=S.cfg,e=eff(),kg=N*c.gram/1000,bahan=kg/(e.rend/100),ik=bahan*e.share/100,tp=bahan-ik,biaya=ik*c.ikan+tp*c.tap+N*c.lain;
- return{kg,bahan,ik,tp,biaya,hpp:N?biaya/N:0,laba:c.jual-(N?biaya/N:0)}}
-const num=(k,l,u)=>`<label>${l}</label><input type="number" inputmode="decimal" data-cfg="${k}" value="${S.cfg[k]}"${u?' placeholder="'+u+'"':''}>`;
-function prod(){const e=eff();
- return `<h1>Produksi & bahan pokok</h1>
- <div class="card"><b>1. Harga & takaran</b>${num('ikan','Harga ikan per kg (Rp)')}${num('tap','Harga tapioka per kg (Rp)')}${num('lain','Biaya lain per bungkus: bumbu, minyak, gas, kemasan, upah (Rp)')}${num('gram','Isi per bungkus (gram)')}${num('jual','Harga jual per bungkus (Rp)')}
- <div class="sub" style="margin-top:8px">Rendemen dan rasio awal (dipakai sebelum ada data produksi sendiri):</div>${num('rend','Rendemen awal (%): kerupuk jadi dibanding total ikan + tapioka')}${num('share','Porsi ikan awal (%) dari total ikan + tapioka')}</div>
- <div class="card"><b>2. Rencana produksi</b><div class="sub">Memakai ${e.src}: rendemen ${e.rend.toFixed(0)}%, porsi ikan ${e.share.toFixed(0)}%.</div>
- <label>Target jumlah bungkus</label><input id="pn" type="number" inputmode="numeric" value="200"><div class="res" id="pr"></div></div>
- <div class="card"><b>3. Catat hasil produksi</b><div class="sub">Timbang bahan dan hasil jadi. Makin banyak data, makin akurat rencana di atas.</div>
- <label>Tanggal</label><input id="b0" type="date" value="${iso(new Date())}"><label>Ikan terpakai (kg)</label><input id="b1" type="number" inputmode="decimal"><label>Tapioka terpakai (kg)</label><input id="b2" type="number" inputmode="decimal"><label>Kerupuk jadi (kg)</label><input id="b3" type="number" inputmode="decimal"><button class="btn" data-batch>Simpan produksi</button></div>
- <h2>Riwayat produksi</h2><div class="card">${S.batch.slice().reverse().map(b=>`<div class="row"><div>${esc(b.date)}<div class="sub">ikan ${b.ikan} kg · tapioka ${b.tap} kg · hasil ${b.out} kg</div></div><div style="text-align:right"><b>${(b.out/(b.ikan+b.tap)*100).toFixed(0)}%</b><div class="sub">${Math.round(b.out*1000/S.cfg.gram)} bks</div></div></div>`).join('')||'<span class="sub">Belum ada produksi tercatat.</span>'}</div>`}
-function calc(){const N=+$('#pn').value||0,p=plan(N);
- $('#pr').innerHTML=`<div class="sub">Bahan yang dibutuhkan</div><b>Ikan ${p.ik.toFixed(1)} kg · Tapioka ${p.tp.toFixed(1)} kg</b>
- <div class="sub" style="margin-top:8px">Perkiraan biaya produksi</div><b>${rp(p.biaya)}</b><div class="sub" style="margin-top:8px">Modal per bungkus (HPP)</div><b>${rp(p.hpp)}</b>
- <div class="sub" style="margin-top:8px">Untung per bungkus</div><b class="${p.laba>=0?'in':'out'}">${rp(p.laba)}</b>${p.laba<0?'<div class="out">Harga jual di bawah modal.</div>':''}`}
-async function saveBatch(){const v=i=>+$('#b'+i).value;if([1,2,3].some(i=>!Number.isFinite(v(i))||v(i)<=0))return toast('Isi ikan, tapioka, dan hasil positif');
- const b={id:Date.now()*1000+Math.floor(Math.random()*1000),date:$('#b0').value,ikan:v(1),tap:v(2),out:v(3)};try{await DB.addBatch(b);S.batch.push(b);put();toast('Produksi tersimpan');render()}catch(e){toast('Gagal menyimpan produksi: '+e.message)}}
-/* ===== Render & event ===== */
-function render(){$('#app').innerHTML={home,add,prod,akun,akuntansi:AUI.render}[view]();if(view=='prod')calc();if(view=='home')showB(CB.length-1);
- $('#nav').innerHTML=[['home','🏠','Beranda'],['add','＋','Catat'],['prod','🐟','Produksi'],['akuntansi','📚','Akuntansi'],['akun','👤','Akun']].map(([k,i,l])=>`<button class="${view==k?'on':''}" data-v="${k}"><span>${i}</span>${l}</button>`).join('')}
-document.addEventListener('click',e=>{const g=a=>e.target.closest('['+a+']');
- if(g('data-v')){view=g('data-v').dataset.v;return render()}if(g('data-per')){per=g('data-per').dataset.per;return render()}
- if(g('data-tab')){tab=g('data-tab').dataset.tab;return render()}if(g('data-save'))return saveTx();if(g('data-batch'))return saveBatch();
- if(g('data-pay')){(async()=>{const x=S.tx.find(y=>String(y.id)===g('data-pay').dataset.pay);if(!x)return;const prev={paid:x.paid,paid_at:x.paid_at};x.paid=true;x.paid_at=iso(new Date());try{await DB.updTx(x);put();toast('Pelunasan dicatat, tanggal penjualan tetap');render()}catch(err){Object.assign(x,prev);toast('Gagal menyimpan pelunasan');}})()}});
-document.addEventListener('change',e=>{if(e.target.id==='income-kind'){$('#income-inputs').innerHTML=incomeInputs(e.target.value);}});
-document.addEventListener('input',e=>{const k=e.target.dataset.cfg;if(k){S.cfg[k]=+e.target.value||0;put();DB.saveCfg(S.cfg);calc()}if(e.target.id=='pn')calc()});
-document.addEventListener('pointerover',e=>{const g=e.target.closest('[data-b]');if(g)showB(g.dataset.b)});
-document.addEventListener('click',e=>{const g=e.target.closest('[data-b]');if(g)showB(g.dataset.b)});
-if('serviceWorker'in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
-render();DB.boot().then(d=>{if(d){S=d;put();render()}}).catch(console.warn);
-</script></body></html>
+
+function eff(){
+  const B=S.batch,c=S.cfg;
+  if(!B.length)return {rend:c.rend,share:c.share,src:'perkiraan awal (belum ada data produksi)',n:0};
+  const bahan=sum(B,b=>b.ikan+b.tap);
+  return {rend:sum(B,b=>b.out)/bahan*100,share:sum(B,b=>b.ikan)/bahan*100,src:'rata-rata dari '+B.length+' produksi Anda',n:B.length};
+}
+
+function plan(N){
+  const c=S.cfg,e=eff();
+  const kg=N*c.gram/1000,bahan=kg/(e.rend/100),ik=bahan*e.share/100,tp=bahan-ik;
+  const biaya=ik*c.ikan+tp*c.tap+N*c.lain;
+  return {kg,bahan,ik,tp,biaya,hpp:N?biaya/N:0,laba:c.jual-(N?biaya/N:0)};
+}
+
+const num=(k,l)=>`<label>${l}</label><input type="number" inputmode="decimal" data-cfg="${k}" value="${+S.cfg[k]||0}">`;
+
+function prod(){
+
+  const e=eff();
+  const B=S.batch||[];
+
+  /* =========================
+     ANALISIS TEKNIK PRODUKSI
+     ========================= */
+
+  const valid=B.filter(b=>{
+    const input=(+b.ikan||0)+(+b.tap||0);
+    return input>0&&(+b.out||0)>0;
+  });
+
+  const last=valid.length
+    ? valid[valid.length-1]
+    : null;
+
+  const lastInput=last
+    ? (+last.ikan||0)+(+last.tap||0)
+    : 0;
+
+  const lastOutput=last
+    ? (+last.out||0)
+    : 0;
+
+  const lastYield=lastInput>0
+    ? lastOutput/lastInput*100
+    : 0;
+
+  const lastLoss=lastInput>0
+    ? lastInput-lastOutput
+    : 0;
+
+  const lastLossPct=lastInput>0
+    ? lastLoss/lastInput*100
+    : 0;
+
+  const lastFishRatio=lastInput>0
+    ? (+last.ikan||0)/lastInput*100
+    : 0;
+
+
+  const avgYield=valid.length
+    ? valid.reduce((s,b)=>{
+        const input=(+b.ikan||0)+(+b.tap||0);
+        return s+(input>0?(+b.out||0)/input*100:0);
+      },0)/valid.length
+    : 0;
+
+
+  const yieldDiff=last&&avgYield
+    ? lastYield-avgYield
+    : 0;
+
+
+  const performance=()=>{
+    if(!last)return {
+      text:'Belum ada data',
+      cls:'',
+      note:'Catat produksi pertama untuk mulai menganalisis performa.'
+    };
+
+    if(lastYield>=avgYield){
+      return {
+        text:'Baik',
+        cls:'in',
+        note:'Rendemen batch terakhir sama atau lebih tinggi dari rata-rata produksi.'
+      };
+    }
+
+    if(lastYield>=avgYield-5){
+      return {
+        text:'Normal',
+        cls:'',
+        note:'Rendemen masih dekat dengan rata-rata produksi.'
+      };
+    }
+
+    return {
+      text:'Perlu Evaluasi',
+      cls:'out',
+      note:'Rendemen batch terakhir berada cukup jauh di bawah rata-rata.'
+    };
+  };
+
+
+  const perf=performance();
+
+
+  return `
+  <h1>Produksi & Monitoring Proses</h1>
+
+  <div class="notice">
+    <b>Monitoring kinerja produksi Olikans</b><br>
+    Data massa bahan baku dan produk akhir digunakan untuk
+    mengevaluasi rendemen, susut massa, dan konsistensi proses produksi.
+  </div>
+
+
+  <!-- ==============================================
+       MONITORING TEKNIK FISIKA
+       ============================================== -->
+
+  <div class="sec-head">
+    <h2>Performa Produksi Terakhir</h2>
+  </div>
+
+  ${
+    last
+    ?`
+    <div class="kpis">
+
+      <div class="kpi k-sales">
+        <div class="lbl">
+          Rendemen Produksi
+        </div>
+
+        <div class="val">
+          ${lastYield.toFixed(1)}%
+        </div>
+
+        <div class="note">
+          ${
+            yieldDiff>=0
+            ?`↑ ${Math.abs(yieldDiff).toFixed(1)}% dari rata-rata`
+            :`↓ ${Math.abs(yieldDiff).toFixed(1)}% dari rata-rata`
+          }
+        </div>
+      </div>
+
+
+      <div class="kpi">
+        <div class="lbl">
+          Massa Input
+        </div>
+
+        <div class="val">
+          ${lastInput.toFixed(1)} kg
+        </div>
+
+        <div class="note">
+          Ikan + tapioka
+        </div>
+      </div>
+
+
+      <div class="kpi">
+        <div class="lbl">
+          Massa Output
+        </div>
+
+        <div class="val">
+          ${lastOutput.toFixed(1)} kg
+        </div>
+
+        <div class="note">
+          Produk setelah proses
+        </div>
+      </div>
+
+
+      <div class="kpi ${lastLossPct>30?'k-warn':''}">
+        <div class="lbl">
+          Susut Massa
+        </div>
+
+        <div class="val">
+          ${lastLoss.toFixed(1)} kg
+        </div>
+
+        <div class="note">
+          ${lastLossPct.toFixed(1)}% dari massa awal
+        </div>
+      </div>
+
+    </div>
+
+
+    <div class="card">
+
+      <b>Analisis Batch Terakhir</b>
+
+      <div class="sub" style="margin-top:4px">
+        Produksi ${esc(last.date)}
+      </div>
+
+
+      <div class="row">
+
+        <div>
+          <span class="sub">
+            Rasio ikan
+          </span>
+          <br>
+
+          <b>
+            ${lastFishRatio.toFixed(1)}%
+          </b>
+        </div>
+
+        <div style="text-align:right">
+          <span class="sub">
+            Rasio tapioka
+          </span>
+          <br>
+
+          <b>
+            ${(100-lastFishRatio).toFixed(1)}%
+          </b>
+        </div>
+
+      </div>
+
+
+      <div class="row">
+
+        <div>
+          <span class="sub">
+            Rendemen batch
+          </span>
+          <br>
+
+          <b class="in">
+            ${lastYield.toFixed(1)}%
+          </b>
+        </div>
+
+        <div style="text-align:right">
+          <span class="sub">
+            Rata-rata historis
+          </span>
+          <br>
+
+          <b>
+            ${avgYield.toFixed(1)}%
+          </b>
+        </div>
+
+      </div>
+
+
+      <div class="row">
+
+        <div>
+          <span class="sub">
+            Status proses
+          </span>
+          <br>
+
+          <b class="${perf.cls}">
+            ${perf.text}
+          </b>
+        </div>
+
+      </div>
+
+
+      <div class="sub" style="margin-top:10px">
+        ${perf.note}
+      </div>
+
+    </div>
+    `
+    :
+    `
+    <div class="card">
+
+      <b>Belum ada data produksi</b>
+
+      <div class="sub" style="margin-top:6px">
+        Setelah produksi pertama dicatat, sistem akan
+        menghitung rendemen, susut massa, rasio bahan,
+        dan performa proses secara otomatis.
+      </div>
+
+    </div>
+    `
+  }
+
+
+  <!-- ==============================================
+       DASAR PERHITUNGAN
+       ============================================== -->
+
+  <div class="card">
+
+    <details>
+
+      <summary>
+        Dasar Analisis Teknik
+      </summary>
+
+      <div class="sub" style="margin-top:10px">
+        Parameter produksi dihitung menggunakan neraca massa
+        sederhana berdasarkan massa bahan masuk dan massa
+        produk yang dihasilkan.
+      </div>
+
+
+      <div class="res">
+
+        <b>Rendemen Produksi</b>
+
+        <div class="sub" style="margin-top:5px">
+          Rendemen = Massa produk / Massa bahan × 100%
+        </div>
+
+      </div>
+
+
+      <div class="res">
+
+        <b>Susut Massa</b>
+
+        <div class="sub" style="margin-top:5px">
+          Susut = Massa bahan − Massa produk
+        </div>
+
+      </div>
+
+
+      <div class="res">
+
+        <b>Persentase Susut</b>
+
+        <div class="sub" style="margin-top:5px">
+          Susut (%) = Susut massa / Massa bahan × 100%
+        </div>
+
+      </div>
+
+
+      <div class="res">
+
+        <b>Komposisi Bahan</b>
+
+        <div class="sub" style="margin-top:5px">
+          Rasio ikan = Massa ikan / Total massa bahan × 100%
+        </div>
+
+      </div>
+
+    </details>
+
+  </div>
+
+
+  <!-- ==============================================
+       RENCANA PRODUKSI
+       ============================================== -->
+
+  <div class="sec-head">
+
+    <h2>Rencana Produksi</h2>
+
+    <button data-v="prod-settings">
+      Pengaturan
+    </button>
+
+  </div>
+
+
+  <div class="card">
+
+    <b>Perencanaan Bahan</b>
+
+    <div class="sub">
+      Memakai ${e.src}: rendemen
+      ${e.rend.toFixed(0)}% dan porsi ikan
+      ${e.share.toFixed(0)}%.
+    </div>
+
+
+    <label>
+      Target jumlah bungkus
+    </label>
+
+    <input
+      id="pn"
+      type="number"
+      inputmode="numeric"
+      min="1"
+      value="200"
+    >
+
+
+    <div
+      class="res"
+      id="pr"
+    ></div>
+
+  </div>
+
+
+  <!-- ==============================================
+       INPUT PRODUKSI
+       ============================================== -->
+
+  <div class="sec-head">
+
+    <h2>Catat Produksi</h2>
+
+  </div>
+
+
+  <div class="card">
+
+    <b>Data Pengukuran Produksi</b>
+
+    <div class="sub">
+      Masukkan hasil pengukuran massa aktual.
+      Sistem akan menghitung kinerja proses dan
+      menambahkan produk ke stok secara otomatis.
+    </div>
+
+
+    <label>
+      Tanggal produksi
+    </label>
+
+    <input
+      id="b0"
+      type="date"
+      value="${iso(new Date())}"
+    >
+
+
+    <label>
+      Produk hasil
+    </label>
+
+    <select id="b-product">
+
+      <option value="">
+        Pilih produk hasil
+      </option>
+
+      ${
+        (S.products||[])
+        .filter(p=>p.active!==false)
+        .map(p=>`
+          <option value="${esc(p.id)}">
+            ${esc(p.name)}
+            · SKU ${esc(p.sku||'-')}
+            · stok ${+p.stock||0} pcs
+          </option>
+        `)
+        .join('')
+      }
+
+    </select>
+
+
+    <h2 style="margin-top:20px">
+      Massa Bahan Masuk
+    </h2>
+
+
+    <label>
+      Massa ikan terpakai (kg)
+    </label>
+
+    <input
+      id="b1"
+      type="number"
+      inputmode="decimal"
+      min="0"
+      step="0.01"
+      placeholder="Contoh: 10"
+    >
+
+
+    <label>
+      Massa tapioka terpakai (kg)
+    </label>
+
+    <input
+      id="b2"
+      type="number"
+      inputmode="decimal"
+      min="0"
+      step="0.01"
+      placeholder="Contoh: 20"
+    >
+
+
+    <h2 style="margin-top:20px">
+      Massa Produk Keluar
+    </h2>
+
+
+    <label>
+      Massa kerupuk jadi (kg)
+    </label>
+
+    <input
+      id="b3"
+      type="number"
+      inputmode="decimal"
+      min="0"
+      step="0.01"
+      placeholder="Contoh: 22.5"
+    >
+<h2 style="margin-top:22px">
+  Parameter Proses
+</h2>
+
+<div class="sub">
+  Parameter berikut digunakan untuk mengevaluasi
+  performa proses produksi secara kuantitatif.
+</div>
+
+
+<label>
+  Durasi proses (menit)
+</label>
+
+<input
+  id="b-duration"
+  type="number"
+  inputmode="decimal"
+  min="0"
+  step="1"
+  placeholder="Contoh: 180"
+>
+
+
+<label>
+  Temperatur proses rata-rata (°C)
+</label>
+
+<input
+  id="b-temperature"
+  type="number"
+  inputmode="decimal"
+  min="0"
+  step="0.1"
+  placeholder="Contoh: 65"
+>
+
+
+<label>
+  Konsumsi energi listrik (kWh)
+</label>
+
+<input
+  id="b-energy"
+  type="number"
+  inputmode="decimal"
+  min="0"
+  step="0.01"
+  placeholder="Contoh: 8.5"
+>
+
+    <div
+      class="res"
+      id="batch-analysis"
+    >
+
+      <span class="sub">
+        Isi massa bahan dan produk untuk melihat
+        analisis proses sebelum data disimpan.
+      </span>
+
+    </div>
+
+
+    <button
+      class="btn"
+      data-batch
+    >
+      Simpan Produksi & Analisis
+    </button>
+
+  </div>
+
+
+  <!-- ==============================================
+       RIWAYAT PRODUKSI
+       ============================================== -->
+
+  <div class="sec-head">
+
+    <h2>Riwayat & Analisis Batch</h2>
+
+    <button data-v="prod-settings">
+      Pengaturan
+    </button>
+
+  </div>
+
+
+  <div class="card">
+
+    ${
+      S.batch
+      .slice()
+      .reverse()
+      .map(b=>{
+
+        const total=
+          (+b.ikan||0)+
+          (+b.tap||0);
+
+        const output=
+          +b.out||0;
+
+        const rendemen=
+          total>0
+          ?output/total*100
+          :0;
+
+        const loss=
+          Math.max(0,total-output);
+
+        const lossPct=
+          total>0
+          ?loss/total*100
+          :0;
+
+        const fish=
+          total>0
+          ?(+b.ikan||0)/total*100
+          :0;
+
+        const bungkus=
+          Math.round(
+            output*1000/
+            (S.cfg.gram||250)
+          );
+
+
+        return `
+        <div
+          class="row"
+          style="align-items:center"
+        >
+
+          <div>
+
+            <b>
+              ${esc(b.date)}
+            </b>
+
+            <div class="sub">
+              Input ${total.toFixed(1)} kg
+              → Output ${output.toFixed(1)} kg
+            </div>
+
+            <div class="sub">
+              Ikan ${fish.toFixed(0)}%
+              · Susut ${lossPct.toFixed(1)}%
+            </div>
+
+          </div>
+
+
+          <div style="text-align:right">
+
+            <b class="in">
+              ${rendemen.toFixed(1)}%
+            </b>
+
+            <div class="sub">
+              rendemen
+            </div>
+
+            <div class="sub">
+              ± ${bungkus} bungkus
+            </div>
+
+          </div>
+
+        </div>
+        `;
+
+      })
+      .join('')
+
+      ||
+
+      `
+      <span class="sub">
+        Belum ada produksi tercatat.
+      </span>
+      `
+    }
+
+  </div>
+`;
+}
+/* ============================================================
+   ANALISIS KINERJA PRODUKSI — TEKNIK FISIKA
+   ============================================================ */
+
+function productionMetrics(){
+
+  const data=(S.batch||[])
+    .filter(b=>{
+      const input=(+b.ikan||0)+(+b.tap||0);
+      return input>0 && (+b.out||0)>0;
+    })
+    .map((b,i)=>{
+
+      const input=
+        (+b.ikan||0)+(+b.tap||0);
+
+      const output=
+        +b.out||0;
+
+      const duration=
+        +b.duration_min||0;
+
+      const temperature=
+        +b.temperature_c||0;
+
+      const energy=
+        +b.energy_kwh||0;
+
+      const yieldPct=
+        input>0
+          ?output/input*100
+          :0;
+
+      const loss=
+        input-output;
+
+      const lossPct=
+        input>0
+          ?loss/input*100
+          :0;
+
+      const productivity=
+        duration>0
+          ?output/(duration/60)
+          :null;
+
+      const specificEnergy=
+        energy>0 && output>0
+          ?energy/output
+          :null;
+
+      return {
+        ...b,
+
+        no:i+1,
+
+        input,
+        output,
+
+        yieldPct,
+        loss,
+        lossPct,
+
+        duration,
+        temperature,
+        energy,
+
+        productivity,
+        specificEnergy
+      };
+
+    });
+
+  return data;
+
+}
+
+
+
+/* ============================================================
+   HELPER RATA-RATA
+   ============================================================ */
+
+function metricAverage(data,key){
+
+  const values=data
+    .map(x=>x[key])
+    .filter(x=>
+      x!==null &&
+      x!==undefined &&
+      Number.isFinite(+x)
+    )
+    .map(Number);
+
+  if(!values.length)return null;
+
+  return values.reduce(
+    (a,b)=>a+b,
+    0
+  )/values.length;
+
+}
+
+
+
+/* ============================================================
+   SVG GRAFIK TEKNIK
+   ============================================================ */
+
+function technicalChart(data,key,unit){
+
+  const values=data
+    .map((x,i)=>({
+      value:Number(x[key]),
+      date:x.date,
+      index:i
+    }))
+    .filter(x=>Number.isFinite(x.value));
+
+
+  if(values.length<2){
+
+    return `
+      <div class="tech-empty">
+        Minimal 2 batch diperlukan untuk menampilkan grafik.
+      </div>
+    `;
+
+  }
+
+
+  const W=700;
+  const H=250;
+
+  const left=52;
+  const right=18;
+  const top=20;
+  const bottom=42;
+
+
+  const chartW=
+    W-left-right;
+
+  const chartH=
+    H-top-bottom;
+
+
+  const rawMin=
+    Math.min(...values.map(x=>x.value));
+
+  const rawMax=
+    Math.max(...values.map(x=>x.value));
+
+
+  let min=rawMin;
+  let max=rawMax;
+
+
+  if(min===max){
+
+    const pad=
+      Math.abs(min)*0.1 || 1;
+
+    min-=pad;
+    max+=pad;
+
+  }else{
+
+    const pad=
+      (max-min)*0.15;
+
+    min-=pad;
+    max+=pad;
+
+  }
+
+
+  const x=i=>
+    left+
+    (
+      values.length===1
+        ?chartW/2
+        :i/(values.length-1)*chartW
+    );
+
+
+  const y=v=>
+    top+
+    (max-v)/(max-min)*chartH;
+
+
+  const points=
+    values
+      .map(
+        (p,i)=>
+          `${x(i).toFixed(1)},${y(p.value).toFixed(1)}`
+      )
+      .join(' ');
+
+
+  const grid=[0,.25,.5,.75,1]
+    .map(t=>{
+
+      const yy=
+        top+t*chartH;
+
+      const val=
+        max-t*(max-min);
+
+      return `
+        <line
+          x1="${left}"
+          y1="${yy}"
+          x2="${W-right}"
+          y2="${yy}"
+          stroke="var(--line)"
+          stroke-width="1"
+        />
+
+        <text
+          x="${left-8}"
+          y="${yy+4}"
+          text-anchor="end"
+          fill="var(--mute)"
+          font-size="10"
+        >
+          ${val.toFixed(1)}
+        </text>
+      `;
+
+    })
+    .join('');
+
+
+  const dots=
+    values
+      .map((p,i)=>`
+
+        <circle
+          cx="${x(i)}"
+          cy="${y(p.value)}"
+          r="5"
+          fill="var(--sea)"
+        >
+          <title>
+            ${p.date}: ${p.value.toFixed(2)} ${unit}
+          </title>
+        </circle>
+
+      `)
+      .join('');
+
+
+  const labels=
+    values
+      .map((p,i)=>{
+
+        if(
+          values.length>7 &&
+          i%Math.ceil(values.length/6)!==0 &&
+          i!==values.length-1
+        ){
+          return '';
+        }
+
+        return `
+          <text
+            x="${x(i)}"
+            y="${H-14}"
+            text-anchor="middle"
+            fill="var(--mute)"
+            font-size="9"
+          >
+            B${i+1}
+          </text>
+        `;
+
+      })
+      .join('');
+
+
+  return `
+    <div class="tech-chart-scroll">
+
+      <svg
+        viewBox="0 0 ${W} ${H}"
+        role="img"
+        aria-label="Grafik ${key}"
+      >
+
+        ${grid}
+
+        <polyline
+          points="${points}"
+          fill="none"
+          stroke="var(--sea)"
+          stroke-width="3"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+
+        ${dots}
+
+        ${labels}
+
+      </svg>
+
+    </div>
+  `;
+
+}
+
+
+
+/* ============================================================
+   HALAMAN ANALISIS PRODUKSI
+   ============================================================ */
+/* ============================================================
+   EVALUASI OTOMATIS KINERJA PRODUKSI
+   ============================================================ */
+
+function productionEvaluation(D){
+
+  if(!D || !D.length){
+    return '';
+  }
+
+  const last=D[D.length-1];
+
+
+  /* ===============================
+     DATA HISTORIS
+     =============================== */
+
+  const previous=D.slice(0,-1);
+
+  const reference=
+    previous.length
+      ?previous
+      :D;
+
+
+  const avgYield=
+    metricAverage(
+      reference,
+      'yieldPct'
+    );
+
+
+  const avgProductivity=
+    metricAverage(
+      reference.filter(
+        x=>x.productivity!==null
+      ),
+      'productivity'
+    );
+
+
+  const avgEnergy=
+    metricAverage(
+      reference.filter(
+        x=>x.specificEnergy!==null
+      ),
+      'specificEnergy'
+    );
+
+
+  const avgTemperature=
+    metricAverage(
+      reference.filter(
+        x=>x.temperature>0
+      ),
+      'temperature'
+    );
+
+
+  /* ===============================
+     HELPER PERBANDINGAN
+     =============================== */
+
+  const percentDiff=(value,avg)=>{
+
+    if(
+      value===null ||
+      value===undefined ||
+      avg===null ||
+      avg===undefined ||
+      avg===0
+    ){
+      return null;
+    }
+
+    return (
+      (value-avg)/avg*100
+    );
+
+  };
+
+
+  const yieldDiff=
+    percentDiff(
+      last.yieldPct,
+      avgYield
+    );
+
+
+  const productivityDiff=
+    percentDiff(
+      last.productivity,
+      avgProductivity
+    );
+
+
+  const energyDiff=
+    percentDiff(
+      last.specificEnergy,
+      avgEnergy
+    );
+
+
+  const temperatureDiff=
+    (
+      last.temperature>0 &&
+      avgTemperature!==null
+    )
+      ?last.temperature-avgTemperature
+      :null;
+
+
+  /* ===============================
+     STATUS RENDEMEN
+     =============================== */
+
+  let yieldStatus='Belum cukup data';
+  let yieldClass='';
+  let yieldText=
+    'Belum tersedia data pembanding.';
+
+
+  if(
+    previous.length &&
+    yieldDiff!==null
+  ){
+
+    if(yieldDiff>=3){
+
+      yieldStatus='Meningkat';
+      yieldClass='in';
+
+      yieldText=
+        `Rendemen ${Math.abs(yieldDiff).toFixed(1)}% `+
+        `lebih tinggi dari rata-rata batch sebelumnya.`;
+
+    }
+
+    else if(yieldDiff<=-3){
+
+      yieldStatus='Menurun';
+      yieldClass='out';
+
+      yieldText=
+        `Rendemen ${Math.abs(yieldDiff).toFixed(1)}% `+
+        `lebih rendah dari rata-rata batch sebelumnya.`;
+
+    }
+
+    else{
+
+      yieldStatus='Stabil';
+
+      yieldText=
+        `Rendemen relatif stabil dengan perubahan `+
+        `${Math.abs(yieldDiff).toFixed(1)}% dari rata-rata sebelumnya.`;
+
+    }
+
+  }
+
+
+  /* ===============================
+     STATUS PRODUKTIVITAS
+     =============================== */
+
+  let productivityStatus='Belum ada data';
+  let productivityClass='';
+  let productivityText=
+    'Durasi proses diperlukan untuk menghitung produktivitas.';
+
+
+  if(
+    last.productivity!==null
+  ){
+
+    if(
+      previous.length &&
+      productivityDiff!==null
+    ){
+
+      if(productivityDiff>=5){
+
+        productivityStatus='Meningkat';
+        productivityClass='in';
+
+        productivityText=
+          `Produktivitas meningkat `+
+          `${Math.abs(productivityDiff).toFixed(1)}% `+
+          `dibanding rata-rata sebelumnya.`;
+
+      }
+
+      else if(productivityDiff<=-5){
+
+        productivityStatus='Menurun';
+        productivityClass='out';
+
+        productivityText=
+          `Produktivitas menurun `+
+          `${Math.abs(productivityDiff).toFixed(1)}% `+
+          `dibanding rata-rata sebelumnya.`;
+
+      }
+
+      else{
+
+        productivityStatus='Stabil';
+
+        productivityText=
+          `Produktivitas relatif konsisten terhadap `+
+          `batch sebelumnya.`;
+
+      }
+
+    }else{
+
+      productivityStatus='Tercatat';
+
+      productivityText=
+        `Produktivitas batch sebesar `+
+        `${last.productivity.toFixed(2)} kg/jam.`;
+
+    }
+
+  }
+
+
+  /* ===============================
+     STATUS ENERGI
+     =============================== */
+
+  let energyStatus='Belum ada data';
+  let energyClass='';
+  let energyText=
+    'Data energi diperlukan untuk mengevaluasi energi spesifik.';
+
+
+  if(
+    last.specificEnergy!==null
+  ){
+
+    if(
+      previous.length &&
+      energyDiff!==null
+    ){
+
+      /*
+       Energi spesifik lebih rendah
+       berarti kebutuhan energi/kg lebih kecil.
+      */
+
+      if(energyDiff<=-5){
+
+        energyStatus='Lebih Rendah';
+        energyClass='in';
+
+        energyText=
+          `Energi spesifik turun `+
+          `${Math.abs(energyDiff).toFixed(1)}% `+
+          `dibanding rata-rata sebelumnya.`;
+
+      }
+
+      else if(energyDiff>=5){
+
+        energyStatus='Lebih Tinggi';
+        energyClass='out';
+
+        energyText=
+          `Energi spesifik naik `+
+          `${Math.abs(energyDiff).toFixed(1)}% `+
+          `dibanding rata-rata sebelumnya.`;
+
+      }
+
+      else{
+
+        energyStatus='Stabil';
+
+        energyText=
+          `Energi spesifik relatif stabil dibanding `+
+          `rata-rata batch sebelumnya.`;
+
+      }
+
+    }else{
+
+      energyStatus='Tercatat';
+
+      energyText=
+        `Energi spesifik batch sebesar `+
+        `${last.specificEnergy.toFixed(3)} kWh/kg.`;
+
+    }
+
+  }
+
+
+  /* ===============================
+     STATUS TEMPERATUR
+     =============================== */
+
+  let temperatureStatus='Belum ada data';
+  let temperatureClass='';
+  let temperatureText=
+    'Temperatur proses belum tersedia.';
+
+
+  if(last.temperature>0){
+
+    if(
+      previous.length &&
+      temperatureDiff!==null
+    ){
+
+      const absDiff=
+        Math.abs(temperatureDiff);
+
+
+      if(absDiff<=2){
+
+        temperatureStatus='Konsisten';
+        temperatureClass='in';
+
+      }
+
+      else{
+
+        temperatureStatus='Berubah';
+
+      }
+
+
+      temperatureText=
+        `Temperatur batch ${last.temperature.toFixed(1)} °C, `+
+        `${absDiff.toFixed(1)} °C `+
+        `${temperatureDiff>=0?'di atas':'di bawah'} `+
+        `rata-rata sebelumnya.`;
+
+    }else{
+
+      temperatureStatus='Tercatat';
+
+      temperatureText=
+        `Temperatur proses tercatat `+
+        `${last.temperature.toFixed(1)} °C.`;
+
+    }
+
+  }
+
+
+  /* ===============================
+     KESIMPULAN OTOMATIS
+     =============================== */
+
+  let conclusion='';
+
+
+  if(!previous.length){
+
+    conclusion=
+      `Batch ini menjadi data awal untuk membangun `+
+      `baseline kinerja produksi. Tambahkan beberapa batch `+
+      `agar perubahan performa dapat dibandingkan.`;
+
+  }else{
+
+    const notes=[];
+
+
+    if(yieldDiff!==null){
+
+      if(yieldDiff>=3){
+
+        notes.push(
+          `rendemen meningkat ${Math.abs(yieldDiff).toFixed(1)}%`
+        );
+
+      }
+
+      else if(yieldDiff<=-3){
+
+        notes.push(
+          `rendemen menurun ${Math.abs(yieldDiff).toFixed(1)}%`
+        );
+
+      }
+
+      else{
+
+        notes.push(
+          `rendemen relatif stabil`
+        );
+
+      }
+
+    }
+
+
+    if(productivityDiff!==null){
+
+      if(productivityDiff>=5){
+
+        notes.push(
+          `produktivitas meningkat ${Math.abs(productivityDiff).toFixed(1)}%`
+        );
+
+      }
+
+      else if(productivityDiff<=-5){
+
+        notes.push(
+          `produktivitas menurun ${Math.abs(productivityDiff).toFixed(1)}%`
+        );
+
+      }
+
+      else{
+
+        notes.push(
+          `produktivitas relatif stabil`
+        );
+
+      }
+
+    }
+
+
+    if(energyDiff!==null){
+
+      if(energyDiff<=-5){
+
+        notes.push(
+          `energi spesifik menurun ${Math.abs(energyDiff).toFixed(1)}%`
+        );
+
+      }
+
+      else if(energyDiff>=5){
+
+        notes.push(
+          `energi spesifik meningkat ${Math.abs(energyDiff).toFixed(1)}%`
+        );
+
+      }
+
+      else{
+
+        notes.push(
+          `energi spesifik relatif stabil`
+        );
+
+      }
+
+    }
+
+
+    conclusion=
+      notes.length
+        ?`Dibanding rata-rata batch sebelumnya, ${notes.join(', ')}.`
+        :`Data batch berhasil dianalisis, tetapi parameter pembanding belum lengkap.`;
+
+  }
+
+
+  /* ===============================
+     OUTPUT HTML
+     =============================== */
+
+  return `
+
+    <div class="sec-head">
+      <h2>Evaluasi Performa</h2>
+    </div>
+
+
+    <div class="tech-eval-grid">
+
+
+      <div class="tech-eval-card">
+
+        <div class="tech-eval-icon">
+          η
+        </div>
+
+        <div>
+
+          <div class="sub">
+            Rendemen
+          </div>
+
+          <b class="${yieldClass}">
+            ${yieldStatus}
+          </b>
+
+          <div class="tech-eval-note">
+            ${yieldText}
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="tech-eval-card">
+
+        <div class="tech-eval-icon">
+          P
+        </div>
+
+        <div>
+
+          <div class="sub">
+            Produktivitas
+          </div>
+
+          <b class="${productivityClass}">
+            ${productivityStatus}
+          </b>
+
+          <div class="tech-eval-note">
+            ${productivityText}
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="tech-eval-card">
+
+        <div class="tech-eval-icon">
+          E
+        </div>
+
+        <div>
+
+          <div class="sub">
+            Energi Spesifik
+          </div>
+
+          <b class="${energyClass}">
+            ${energyStatus}
+          </b>
+
+          <div class="tech-eval-note">
+            ${energyText}
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="tech-eval-card">
+
+        <div class="tech-eval-icon">
+          T
+        </div>
+
+        <div>
+
+          <div class="sub">
+            Temperatur
+          </div>
+
+          <b class="${temperatureClass}">
+            ${temperatureStatus}
+          </b>
+
+          <div class="tech-eval-note">
+            ${temperatureText}
+          </div>
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+
+    <div class="tech-conclusion">
+
+      <div class="tech-conclusion-title">
+        Kesimpulan Analisis
+      </div>
+
+      <div class="tech-conclusion-text">
+        ${conclusion}
+      </div>
+
+      <div class="sub" style="margin-top:10px">
+        Evaluasi bersifat komparatif terhadap data historis produksi,
+        bukan penetapan standar mutu produk.
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+function analysis(){
+
+  const D=productionMetrics();
+
+
+  if(!D.length){
+
+    return `
+      <h1>Analisis Produksi</h1>
+
+      <div class="notice">
+        Belum tersedia data produksi yang dapat dianalisis.
+        Catat produksi terlebih dahulu melalui menu Produksi.
+      </div>
+
+      <button
+        class="btn"
+        data-v="prod"
+      >
+        Catat Produksi
+      </button>
+    `;
+
+  }
+
+
+  const last=
+    D[D.length-1];
+
+
+  const avgYield=
+    metricAverage(D,'yieldPct');
+
+  const avgTemp=
+    metricAverage(
+      D.filter(x=>x.temperature>0),
+      'temperature'
+    );
+
+  const avgProductivity=
+    metricAverage(
+      D.filter(x=>x.productivity!==null),
+      'productivity'
+    );
+
+  const avgEnergy=
+    metricAverage(
+      D.filter(x=>x.specificEnergy!==null),
+      'specificEnergy'
+    );
+
+
+  const yieldStatus=
+    avgYield===null
+      ?''
+      :last.yieldPct>=avgYield
+        ?'Baik'
+        :last.yieldPct>=avgYield-5
+          ?'Normal'
+          :'Perlu Evaluasi';
+
+
+  return `
+
+    <div class="tech-analysis">
+
+      <h1>Analisis Kinerja Produksi</h1>
+
+      <div class="notice">
+
+        <b>Monitoring parameter proses</b><br>
+
+        Analisis menggunakan data massa, waktu,
+        temperatur, dan energi untuk mengevaluasi
+        performa setiap batch produksi.
+
+      </div>
+
+
+      <!-- =============================
+           KPI
+           ============================= -->
+
+      <div class="sec-head">
+
+        <h2>Indikator Kinerja</h2>
+
+      </div>
+
+
+      <div class="kpis">
+
+
+        <div class="kpi k-sales">
+
+          <div class="lbl">
+            Rendemen Rata-rata
+          </div>
+
+          <div class="val">
+            ${avgYield!==null
+              ?avgYield.toFixed(1)+'%'
+              :'-'}
+          </div>
+
+          <div class="note">
+            ${D.length} batch produksi
+          </div>
+
+        </div>
+
+
+        <div class="kpi">
+
+          <div class="lbl">
+            Produktivitas
+          </div>
+
+          <div class="val">
+            ${avgProductivity!==null
+              ?avgProductivity.toFixed(2)
+              :'-'}
+          </div>
+
+          <div class="note">
+            kg produk/jam
+          </div>
+
+        </div>
+
+
+        <div class="kpi">
+
+          <div class="lbl">
+            Temperatur Rata-rata
+          </div>
+
+          <div class="val">
+            ${avgTemp!==null
+              ?avgTemp.toFixed(1)+' °C'
+              :'-'}
+          </div>
+
+          <div class="note">
+            Parameter proses
+          </div>
+
+        </div>
+
+
+        <div class="kpi">
+
+          <div class="lbl">
+            Energi Spesifik
+          </div>
+
+          <div class="val">
+            ${avgEnergy!==null
+              ?avgEnergy.toFixed(3)
+              :'-'}
+          </div>
+
+          <div class="note">
+            kWh/kg produk
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- =============================
+           INTERPRETASI
+           ============================= -->
+
+      <div class="card">
+
+        <b>Evaluasi Batch Terakhir</b>
+
+        <div class="sub">
+          ${esc(last.date)}
+        </div>
+
+
+        <div class="row">
+
+          <span>
+            Rendemen
+          </span>
+
+          <b class="in">
+            ${last.yieldPct.toFixed(1)}%
+          </b>
+
+        </div>
+
+
+        <div class="row">
+
+          <span>
+            Susut massa
+          </span>
+
+          <b>
+            ${last.loss.toFixed(2)} kg
+            (${last.lossPct.toFixed(1)}%)
+          </b>
+
+        </div>
+
+
+        <div class="row">
+
+          <span>
+            Produktivitas
+          </span>
+
+          <b>
+            ${last.productivity!==null
+              ?last.productivity.toFixed(2)+' kg/jam'
+              :'-'}
+          </b>
+
+        </div>
+
+
+        <div class="row">
+
+          <span>
+            Temperatur
+          </span>
+
+          <b>
+            ${last.temperature>0
+              ?last.temperature.toFixed(1)+' °C'
+              :'-'}
+          </b>
+
+        </div>
+
+
+        <div class="row">
+
+          <span>
+            Energi spesifik
+          </span>
+
+          <b>
+            ${last.specificEnergy!==null
+              ?last.specificEnergy.toFixed(3)+' kWh/kg'
+              :'-'}
+          </b>
+
+        </div>
+
+
+        <div class="row">
+
+          <span>
+            Status rendemen
+          </span>
+
+          <b class="${
+            yieldStatus==='Baik'
+              ?'in'
+              :yieldStatus==='Perlu Evaluasi'
+                ?'out'
+                :''
+          }">
+            ${yieldStatus}
+          </b>
+
+        </div>
+
+      </div>
+
+      ${productionEvaluation(D)}</style>
+
+      <!-- =============================
+           GRAFIK RENDEMEN
+           ============================= -->
+
+      <div class="card tech-chart-card">
+
+        <div class="tech-chart-head">
+
+          <div>
+
+            <b>Tren Rendemen Produksi</b>
+
+            <div class="sub">
+              Persentase massa produk terhadap massa bahan.
+            </div>
+
+          </div>
+
+          <strong>
+            ${avgYield!==null
+              ?avgYield.toFixed(1)+'%'
+              :'-'}
+          </strong>
+
+        </div>
+
+        ${
+          technicalChart(
+            D,
+            'yieldPct',
+            '%'
+          )
+        }
+
+      </div>
+
+
+      <!-- =============================
+           GRAFIK TEMPERATUR
+           ============================= -->
+
+      <div class="card tech-chart-card">
+
+        <div class="tech-chart-head">
+
+          <div>
+
+            <b>Tren Temperatur Proses</b>
+
+            <div class="sub">
+              Temperatur rata-rata yang dicatat pada setiap batch.
+            </div>
+
+          </div>
+
+          <strong>
+            ${avgTemp!==null
+              ?avgTemp.toFixed(1)+' °C'
+              :'-'}
+          </strong>
+
+        </div>
+
+        ${
+          technicalChart(
+            D.filter(x=>x.temperature>0),
+            'temperature',
+            '°C'
+          )
+        }
+
+      </div>
+
+
+      <!-- =============================
+           GRAFIK PRODUKTIVITAS
+           ============================= -->
+
+      <div class="card tech-chart-card">
+
+        <div class="tech-chart-head">
+
+          <div>
+
+            <b>Tren Produktivitas</b>
+
+            <div class="sub">
+              Massa produk yang dihasilkan per jam proses.
+            </div>
+
+          </div>
+
+          <strong>
+            ${avgProductivity!==null
+              ?avgProductivity.toFixed(2)+' kg/jam'
+              :'-'}
+          </strong>
+
+        </div>
+
+        ${
+          technicalChart(
+            D.filter(
+              x=>x.productivity!==null
+            ),
+            'productivity',
+            'kg/jam'
+          )
+        }
+
+      </div>
+
+
+      <!-- =============================
+           GRAFIK ENERGI
+           ============================= -->
+
+      <div class="card tech-chart-card">
+
+        <div class="tech-chart-head">
+
+          <div>
+
+            <b>Tren Energi Spesifik</b>
+
+            <div class="sub">
+              Konsumsi energi listrik untuk menghasilkan
+              satu kilogram produk.
+            </div>
+
+          </div>
+
+          <strong>
+            ${avgEnergy!==null
+              ?avgEnergy.toFixed(3)+' kWh/kg'
+              :'-'}
+          </strong>
+
+        </div>
+
+        ${
+          technicalChart(
+            D.filter(
+              x=>x.specificEnergy!==null
+            ),
+            'specificEnergy',
+            'kWh/kg'
+          )
+        }
+
+      </div>
+
+
+      <!-- =============================
+           TABEL BATCH
+           ============================= -->
+
+      <div class="sec-head">
+
+        <h2>Data Antar-Batch</h2>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="table-scroll">
+
+          <table class="acct-table">
+
+            <thead>
+
+              <tr>
+
+                <th>Batch</th>
+
+                <th>Tanggal</th>
+
+                <th>Rendemen</th>
+
+                <th>Suhu</th>
+
+                <th>Produktivitas</th>
+
+                <th>Energi Spesifik</th>
+
+              </tr>
+
+            </thead>
+
+
+            <tbody>
+
+              ${
+                D.slice()
+                .reverse()
+                .map(x=>`
+
+                  <tr>
+
+                    <td>
+                      B${x.no}
+                    </td>
+
+                    <td>
+                      ${esc(x.date)}
+                    </td>
+
+                    <td>
+                      ${x.yieldPct.toFixed(1)}%
+                    </td>
+
+                    <td>
+                      ${x.temperature>0
+                        ?x.temperature.toFixed(1)+' °C'
+                        :'-'}
+                    </td>
+
+                    <td>
+                      ${x.productivity!==null
+                        ?x.productivity.toFixed(2)
+                        :'-'}
+                    </td>
+
+                    <td>
+                      ${x.specificEnergy!==null
+                        ?x.specificEnergy.toFixed(3)
+                        :'-'}
+                    </td>
+
+                  </tr>
+
+                `)
+                .join('')
+              }
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+      </div>
+
+
+      <div class="notice">
+
+        <b>Catatan analisis:</b><br>
+
+        Rendemen menunjukkan pemanfaatan massa bahan,
+        produktivitas menunjukkan output per satuan waktu,
+        sedangkan energi spesifik menunjukkan kebutuhan
+        energi listrik per kilogram produk.
+
+        Nilai-nilai ini digunakan sebagai indikator
+        monitoring dan perbandingan antar-batch,
+        bukan sebagai batas mutu baku tanpa standar proses
+        yang telah ditetapkan.
+
+      </div>
+
+
+    </div>
+  `;
+
+  }  
+
+function prodSettings(){
+  return `
+  <h1>Pengaturan Produksi</h1>
+  <div class="notice">Data ini menjadi dasar perhitungan rencana produksi dan estimasi HPP. Tidak perlu diubah setiap kali produksi.</div>
+  <div class="card"><b>Harga Bahan</b>${num('ikan','Harga ikan per kg (Rp)')}${num('tap','Harga tapioka per kg (Rp)')}${num('lain','Biaya lain per bungkus (Rp)')}</div>
+  <div class="card"><b>Takaran Produk</b>${num('gram','Isi per bungkus (gram)')}${num('jual','Harga jual per bungkus (Rp)')}</div>
+  <div class="card"><b>Parameter Produksi Awal</b><div class="sub">Digunakan sebagai perkiraan sebelum tersedia cukup data produksi aktual.</div>${num('rend','Rendemen awal (%)')}${num('share','Porsi ikan dari total bahan (%)')}</div>
+  <button class="btn ghost" data-v="prod">Kembali ke Produksi</button>`;
+}
+
+function calc(){
+  const el=$('#pn');if(!el)return;
+  const p=plan(+el.value||0),pr=$('#pr');if(!pr)return;
+  pr.innerHTML=`
+    <div class="sub">Bahan yang dibutuhkan</div>
+    <b>Ikan ${p.ik.toFixed(1)} kg · Tapioka ${p.tp.toFixed(1)} kg</b>
+    <div class="sub" style="margin-top:8px">Perkiraan biaya produksi</div><b>${rp(p.biaya)}</b>
+    <div class="sub" style="margin-top:8px">Modal per bungkus (HPP)</div><b>${rp(p.hpp)}</b>
+    <div class="sub" style="margin-top:8px">Untung per bungkus</div><b class="${p.laba>=0?'in':'out'}">${rp(p.laba)}</b>
+    ${p.laba<0?'<div class="out">Harga jual di bawah modal.</div>':''}`;
+}
+
+async function saveBatch(){
+
+  const v=i=>+$('#b'+i).value;
+
+  if(
+    [1,2,3].some(
+      i=>!Number.isFinite(v(i))||v(i)<=0
+    )
+  ){
+    return toast(
+      'Isi ikan, tapioka, dan hasil positif'
+    );
+  }
+
+
+  /* ===============================
+     DATA PRODUKSI
+     =============================== */
+
+  const b={
+    id:Date.now()*1000+Math.floor(Math.random()*1000),
+
+    date:$('#b0').value,
+
+    ikan:v(1),
+    tap:v(2),
+    out:v(3),
+
+    duration_min:
+      $('#b-duration')?.value
+        ?Number($('#b-duration').value)
+        :null,
+
+    temperature_c:
+      $('#b-temperature')?.value
+        ?Number($('#b-temperature').value)
+        :null,
+
+    energy_kwh:
+      $('#b-energy')?.value
+        ?Number($('#b-energy').value)
+        :null
+  };
+
+
+  /* ===============================
+     VALIDASI NERACA MASSA
+     =============================== */
+
+  const totalInput=
+    b.ikan+b.tap;
+
+
+  if(b.out>totalInput){
+
+    return toast(
+      'Massa produk tidak boleh melebihi total massa bahan. Periksa kembali data pengukuran.'
+    );
+
+  }
+
+
+  const yieldPct=
+    b.out/totalInput*100;
+
+
+  if(
+    yieldPct<=0 ||
+    yieldPct>100
+  ){
+
+    return toast(
+      'Nilai rendemen tidak valid. Periksa massa bahan dan produk.'
+    );
+
+  }
+
+
+  /* ===============================
+     VALIDASI PARAMETER PROSES
+     =============================== */
+
+  if(
+    b.duration_min!==null &&
+    (
+      !Number.isFinite(b.duration_min) ||
+      b.duration_min<=0
+    )
+  ){
+
+    return toast(
+      'Durasi proses harus lebih dari 0 menit'
+    );
+
+  }
+
+
+  if(
+    b.temperature_c!==null &&
+    (
+      !Number.isFinite(b.temperature_c) ||
+      b.temperature_c<0 ||
+      b.temperature_c>250
+    )
+  ){
+
+    return toast(
+      'Temperatur proses tidak valid'
+    );
+
+  }
+
+
+  if(
+    b.energy_kwh!==null &&
+    (
+      !Number.isFinite(b.energy_kwh) ||
+      b.energy_kwh<0
+    )
+  ){
+
+    return toast(
+      'Konsumsi energi tidak valid'
+    );
+
+  }
+
+
+  /* ===============================
+     PRODUK HASIL
+     =============================== */
+
+  const pid=
+    $('#b-product')?.value;
+
+
+  try{
+
+    let msg=
+      'Produksi tersimpan';
+
+
+    /* simpan batch produksi */
+
+    await DB.addBatch(b);
+
+
+    /* jika produk dipilih,
+       hasil produksi masuk stok */
+
+    if(pid){
+
+      const p=
+        S.products.find(
+          x=>String(x.id)===String(pid)
+        );
+
+
+      if(!p){
+
+        throw new Error(
+          'Produk hasil produksi tidak ditemukan'
+        );
+
+      }
+
+
+      const qty=
+        Math.round(
+          b.out*1000/
+          (
+            +p.weight_grams ||
+            S.cfg.gram ||
+            250
+          )
+        );
+
+
+      await DB.addProductionStock(
+        pid,
+        qty,
+        b.id
+      );
+
+
+      msg=
+        'Produksi tersimpan dan '+
+        qty+
+        ' pcs masuk stok '+
+        p.name;
+
+    }
+
+
+    /* update state */
+
+    S.batch.push(b);
+
+
+    if(pid){
+
+      const d=
+        await DB.pull();
+
+      if(d)S=d;
+
+    }
+
+
+    put();
+
+    toast(msg);
+
+    render();
+
+
+  }catch(e){
+
+    console.error(e);
+
+
+    try{
+
+      const d=
+        await DB.pull();
+
+      if(d){
+
+        S=d;
+
+        put();
+
+        render();
+
+      }
+
+    }catch(_){}
+
+
+    toast(
+      'Gagal menyimpan produksi: '+
+      e.message
+    );
+
+  }
+
+}
+
+/* ===================== RENDER ===================== */
+function render(){
+  const y=window.scrollY;
+  const pages={
+  home,
+  orders,
+  products,
+  prod,
+  analysis,
+  'prod-settings':prodSettings,
+  more,
+  add,
+  akun,
+  akuntansi:AUI.render
+};
+  $('#app').innerHTML=(pages[view]||home)();
+  if(view==='prod')calc();
+  if(view==='home'&&CB.length)showB(CB.length-1);
+  $('#nav').innerHTML=[['home','home','Beranda'],['orders','cart','Pesanan'],['prod','fac','Produksi'],['add','wallet','Keuangan'],['more','menu','Lainnya']]
+    .map(([k,i,l])=>`<button class="${view===k?'on':''}" data-v="${k}" aria-label="${l}">${ic(i,22)}${l}</button>`).join('');
+  window.scrollTo(0,y);
+}
+
+/* ===================== EVENT: CLICK ===================== */
+document.addEventListener('click',e=>{
+  const g=a=>e.target.closest('['+a+']');
+  let el;
+
+  if(el=g('data-qa')){
+    const act=el.dataset.qa;
+    productEdit=stockEdit=orderEdit=null;
+    if(act==='order'){view='orders';orderEdit='NEW';orderDraft=[emptyItem()]}
+    if(act==='prod')view='prod';
+    if(act==='expense'){view='add';tab='out'}
+    window.scrollTo(0,0);return render();
+  }
+  if(el=g('data-v')){
+    view=el.dataset.v;productEdit=stockEdit=orderEdit=null;
+    window.scrollTo(0,0);return render();
+  }
+  if(el=g('data-per')){per=el.dataset.per;return render()}
+  if(el=g('data-tab')){tab=el.dataset.tab;return render()}
+
+  /* order */
+  if(g('data-order-new')){orderEdit='NEW';orderDraft=[emptyItem()];window.scrollTo(0,0);return render()}
+  if(g('data-order-cancel')){orderEdit=null;orderDraft=[emptyItem()];window.scrollTo(0,0);return render()}
+  if(g('data-order-add')){orderDraft.push(emptyItem());return render()}
+  if(el=g('data-order-remove')){
+    orderDraft.splice(Number(el.dataset.orderRemove),1);
+    if(!orderDraft.length)orderDraft.push(emptyItem());
+    return render();
+  }
+  if(g('data-order-save'))return saveOrder();
+  if(el=g('data-order-next'))return advanceOrder(el.dataset.orderNext,el.dataset.next);
+  if(el=g('data-order-cancel-id'))return advanceOrder(el.dataset.orderCancelId,'CANCELLED');
+
+  /* produk */
+  if(g('data-product-new')){stockEdit=null;productEdit='NEW';window.scrollTo(0,0);return render()}
+  if(el=g('data-product-edit')){stockEdit=null;productEdit=el.dataset.productEdit;window.scrollTo(0,0);return render()}
+  if(g('data-product-cancel')){productEdit=null;return render()}
+  if(g('data-product-save'))return saveProduct();
+
+  /* stok */
+  if(el=g('data-stock-edit')){productEdit=null;stockEdit=el.dataset.stockEdit;window.scrollTo(0,0);return render()}
+  if(g('data-stock-cancel')){stockEdit=null;return render()}
+  if(g('data-stock-save'))return saveStock();
+
+  /* transaksi / produksi */
+  if(g('data-save'))return saveTx();
+  if(g('data-batch'))return saveBatch();
+
+  /* pelunasan piutang */
+  if(el=g('data-pay')){
+    (async()=>{
+      const x=S.tx.find(y=>String(y.id)===String(el.dataset.pay));
+      if(!x)return;
+      const prev={paid:x.paid,paid_at:x.paid_at};
+      x.paid=true;x.paid_at=iso(new Date());
+      try{
+        await DB.updTx(x);put();
+        toast('Pelunasan dicatat, tanggal penjualan tetap');render();
+      }catch(err){Object.assign(x,prev);toast('Gagal menyimpan pelunasan')}
+    })();
+  }
+});
+
+/* ===================== EVENT: CHANGE ===================== */
+document.addEventListener('change',e=>{
+  if(e.target.id==='income-kind')$('#income-inputs').innerHTML=incomeInputs(e.target.value);
+
+  if(e.target.dataset.orderProduct!==undefined){
+    const i=Number(e.target.dataset.orderProduct),pid=e.target.value;
+    if(pid&&orderDraft.some((x,k)=>k!==i&&String(x.product_id)===String(pid))){
+      toast('Produk tersebut sudah ada di pesanan');
+      orderDraft[i]=emptyItem();return render();
+    }
+    orderDraft[i].product_id=pid;orderDraft[i].quantity=1;
+    return render();
+  }
+});
+
+/* ===================== EVENT: INPUT ===================== */
+document.addEventListener('input',e=>{
+    /* ============================================
+     ANALISIS PRODUKSI REAL-TIME
+     ============================================ */
+
+  if(
+  e.target.id==='b1' ||
+  e.target.id==='b2' ||
+  e.target.id==='b3' ||
+  e.target.id==='b-duration' ||
+  e.target.id==='b-temperature' ||
+  e.target.id==='b-energy'
+){
+
+    const ikan=
+      Number($('#b1')?.value||0);
+
+    const tap=
+      Number($('#b2')?.value||0);
+
+    const output=
+      Number($('#b3')?.value||0);
+
+const duration=
+  Number($('#b-duration')?.value||0);
+
+const temperature=
+  Number($('#b-temperature')?.value||0);
+
+const energy=
+  Number($('#b-energy')?.value||0);
+    const box=
+      $('#batch-analysis');
+
+    if(!box)return;
+
+
+    const input=
+      ikan+tap;
+
+
+    if(
+      input<=0 ||
+      output<=0
+    ){
+
+      box.innerHTML=`
+        <span class="sub">
+          Isi massa bahan dan produk untuk melihat
+          analisis proses sebelum data disimpan.
+        </span>
+      `;
+
+      return;
+    }
+
+
+    const yieldPct=
+      output/input*100;
+
+    const loss=
+      input-output;
+
+    const lossPct=
+      loss/input*100;
+
+    const fishRatio=
+      ikan/input*100;
+
+    const tapiocaRatio=
+      tap/input*100;
+const durationHour=
+  duration>0
+    ?duration/60
+    :0;
+
+const productivity=
+  durationHour>0
+    ?output/durationHour
+    :0;
+
+const specificEnergy=
+  energy>0&&output>0
+    ?energy/output
+    :0;
+
+    box.innerHTML=`
+
+      <div class="sub">
+        Analisis proses sementara
+      </div>
+
+
+      <div class="row">
+
+        <span>
+          Massa input
+        </span>
+
+        <b>
+          ${input.toFixed(2)} kg
+        </b>
+
+      </div>
+
+
+      <div class="row">
+
+        <span>
+          Massa output
+        </span>
+
+        <b>
+          ${output.toFixed(2)} kg
+        </b>
+
+      </div>
+
+
+      <div class="row">
+
+        <span>
+          Rendemen
+        </span>
+
+        <b class="in">
+          ${yieldPct.toFixed(1)}%
+        </b>
+
+      </div>
+
+
+      <div class="row">
+
+        <span>
+          Susut massa
+        </span>
+
+        <b>
+          ${loss.toFixed(2)} kg
+          (${lossPct.toFixed(1)}%)
+        </b>
+
+      </div>
+
+
+      <div class="row">
+
+        <span>
+          Komposisi
+        </span>
+
+        <b>
+          Ikan ${fishRatio.toFixed(1)}%
+          · Tapioka ${tapiocaRatio.toFixed(1)}%
+        </b>
+
+      </div>
+${duration>0?`
+  <div class="row">
+
+    <span>
+      Durasi proses
+    </span>
+
+    <b>
+      ${duration.toFixed(0)} menit
+      (${durationHour.toFixed(2)} jam)
+    </b>
+
+  </div>
+
+
+  <div class="row">
+
+    <span>
+      Produktivitas
+    </span>
+
+    <b class="in">
+      ${productivity.toFixed(2)} kg/jam
+    </b>
+
+  </div>
+`:''}
+
+
+${temperature>0?`
+  <div class="row">
+
+    <span>
+      Temperatur proses
+    </span>
+
+    <b>
+      ${temperature.toFixed(1)} °C
+    </b>
+
+  </div>
+`:''}
+
+
+${energy>0?`
+  <div class="row">
+
+    <span>
+      Konsumsi energi
+    </span>
+
+    <b>
+      ${energy.toFixed(2)} kWh
+    </b>
+
+  </div>
+
+
+  <div class="row">
+
+    <span>
+      Energi spesifik
+    </span>
+
+    <b class="in">
+      ${specificEnergy.toFixed(3)} kWh/kg
+    </b>
+
+  </div>
+`:''}
+    `;
+  }
+
+  if(e.target.id==='o-ship'||e.target.id==='o-disc')refreshOrderTotal();
+
+  if(e.target.id==='stock-change'){
+    const p=S.products.find(x=>String(x.id)===String(stockEdit)),pv=$('#stock-preview');
+    if(p&&pv){
+      const ch=Number(e.target.value||0),cur=Number(p.stock||0),sc=Number.isFinite(ch)?ch:0,nx=cur+sc;
+      pv.innerHTML=`
+        <div class="sub">Stok sekarang</div><b>${cur.toLocaleString('id-ID')} pcs</b>
+        <div class="sub" style="margin-top:8px">Perubahan</div><b class="${sc>=0?'in':'out'}">${sc>0?'+':''}${sc} pcs</b>
+        <div class="sub" style="margin-top:8px">Stok setelah perubahan</div><b class="${nx>=0?'in':'out'}">${nx.toLocaleString('id-ID')} pcs</b>`;
+    }
+  }
+
+  const k=e.target.dataset.cfg;
+  if(k){
+    S.cfg[k]=+e.target.value||0;put();DB.saveCfg(S.cfg);
+    if(view==='prod')calc();
+  }
+  if(e.target.id==='pn')calc();
+});
+
+/* ===================== EVENT: GRAFIK ===================== */
+document.addEventListener('pointerover',e=>{
+  const g=e.target.closest('[data-b]');if(g)showB(g.dataset.b);
+});
+document.addEventListener('click',e=>{
+  const g=e.target.closest('[data-b]');if(g)showB(g.dataset.b);
+});
+document.addEventListener('keydown',e=>{
+  const g=e.target.closest&&e.target.closest('.bg[data-b]');
+  if(!g)return;
+  const i=+g.dataset.b;
+  if(e.key==='Enter'||e.key===' '){e.preventDefault();showB(i)}
+  if(e.key==='ArrowRight'||e.key==='ArrowLeft'){
+    e.preventDefault();
+    const nx=Math.min(CB.length-1,Math.max(0,i+(e.key==='ArrowRight'?1:-1)));
+    const t=document.querySelector('.bg[data-b="'+nx+'"]');
+    if(t){t.focus();showB(nx)}
+  }
+});
+
+let rzT;
+window.addEventListener('resize',()=>{
+  clearTimeout(rzT);
+  rzT=setTimeout(()=>{
+    const b=$('#chartbox');
+    if(b&&CB.length){b.innerHTML=chartSvg(CB);showB(CB.length-1)}
+  },150);
+});
+
+/* ===================== SERVICE WORKER ===================== */
+if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
+
+/* ===================== START ===================== */
+render();
+DB.boot()
+  .then(d=>{if(d){S=d;put()}})
+  .catch(console.warn)
+  .finally(()=>{syncing=false;render()});
+</script>
+</body>
+</html>
