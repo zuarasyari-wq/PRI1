@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <title>OLIKANS - Modern Kerupuk App Icon</title>
+  <desc>Editable vector app icon featuring golden crispy crackers on a deep teal background.</desc>
+  <defs>
+    <linearGradient id="bg" x1="70" y1="40" x2="440" y2="480" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#176F70"/>
+      <stop offset="1" stop-color="#0B3F4A"/>
+    </linearGradient>
+    <linearGradient id="cracker" x1="130" y1="135" x2="380" y2="390" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFE7A0"/>
+      <stop offset=".48" stop-color="#F7B83E"/>
+      <stop offset="1" stop-color="#D98218"/>
+    </linearGradient>
+    <linearGradient id="cracker2" x1="170" y1="130" x2="350" y2="350" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFF0BC"/>
+      <stop offset="1" stop-color="#E99A27"/>
+    </linearGradient>
+    <filter id="shadow" x="70" y="70" width="390" height="390" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+      <feGaussianBlur stdDeviation="12"/>
+    </filter>
+  </defs>
+  <!-- App background -->
+  <rect id="background" width="512" height="512" rx="112" fill="url(#bg)"/>
+  <!-- Soft decorative glow -->
+  <circle cx="256" cy="245" r="164" fill="#69B4A5" opacity=".10"/>
+  <circle cx="256" cy="245" r="132" fill="none" stroke="#A7D4C4" stroke-width="2" opacity=".18"/>
+  <!-- Ground shadow -->
+  <ellipse cx="258" cy="385" rx="133" ry="24" fill="#062E37" opacity=".42" filter="url(#shadow)"/>
+  <!-- Rear cracker: bubbly round kerupuk -->
+  <g id="rear-cracker" transform="rotate(-18 260 240)">
+    <path d="M153 242 C137 215 147 184 174 169 C183 139 216 126 243 140 C268 119 303 130 314 157 C346 164 362 193 349 220 C365 247 349 278 321 286 C307 316 273 324 248 306 C219 322 187 307 181 279 C153 273 139 256 153 242Z" fill="url(#cracker2)" stroke="#FFE9AF" stroke-width="7" stroke-linejoin="round"/>
+    <g fill="#C9791A" opacity=".55">
+      <circle cx="193" cy="187" r="8"/><circle cx="235" cy="165" r="6"/><circle cx="292" cy="174" r="9"/>
+      <circle cx="326" cy="218" r="7"/><circle cx="300" cy="270" r="8"/><circle cx="245" cy="286" r="7"/>
+      <circle cx="190" cy="252" r="6"/>
+    </g>
+    <g fill="#FFF4D1" opacity=".85">
+      <circle cx="211" cy="203" r="5"/><circle cx="271" cy="191" r="5"/><circle cx="315" cy="244" r="4"/>
+      <circle cx="222" cy="265" r="4"/>
+    </g>
+  </g>
+  <!-- Front crispy cracker: curved, folded wafer-like kerupuk -->
+  <g id="front-cracker">
+    <path d="M111 286 C124 245 161 216 204 210 C246 160 320 159 365 196 C404 228 406 290 373 326 C346 357 296 365 254 344 C212 365 159 351 132 322 C120 311 114 299 111 286Z" fill="url(#cracker)" stroke="#FFF0C5" stroke-width="8" stroke-linejoin="round"/>
+    <path d="M142 285 C165 251 196 239 229 238 C263 199 318 195 351 224 C375 246 377 282 360 306 C333 335 294 337 258 317 C222 339 177 324 154 306 C147 300 144 293 142 285Z" fill="none" stroke="#FFF4D4" stroke-width="8" stroke-linecap="round" opacity=".8"/>
+    <path d="M169 281 C194 263 214 261 237 266 C263 239 301 234 328 250" fill="none" stroke="#C9791A" stroke-width="7" stroke-linecap="round" opacity=".55"/>
+    <g fill="#C9791A" opacity=".62">
+      <ellipse cx="184" cy="294" rx="8" ry="5" transform="rotate(-25 184 294)"/>
+      <ellipse cx="224" cy="286" rx="7" ry="5" transform="rotate(15 224 286)"/>
+      <ellipse cx="270" cy="276" rx="8" ry="5" transform="rotate(-15 270 276)"/>
+      <ellipse cx="316" cy="286" rx="7" ry="5" transform="rotate(25 316 286)"/>
+      <ellipse cx="346" cy="257" rx="5" ry="4"/>
+    </g>
+    <g fill="#FFF7DF" opacity=".9">
+      <circle cx="163" cy="270" r="4"/><circle cx="205" cy="247" r="4"/><circle cx="291" cy="222" r="4"/><circle cx="348" cy="237" r="4"/>
+    </g>
+  </g>
+  <!-- Small fresh-leaf accent -->
+  <g id="leaf-accent" transform="rotate(24 365 143)">
+    <path d="M340 159 C343 125 372 105 402 111 C398 141 379 163 340 159Z" fill="#9BCB83" stroke="#D9E9B8" stroke-width="5" stroke-linejoin="round"/>
+    <path d="M344 157 C361 143 378 129 395 116" fill="none" stroke="#477F61" stroke-width="4" stroke-linecap="round"/>
+  </g>
+  <!-- Tiny sparkle accents -->
+  <g id="sparkles" fill="#FFF1C8">
+    <path d="M117 165 L123 181 L139 187 L123 193 L117 209 L111 193 L95 187 L111 181Z" opacity=".9"/>
+    <path d="M395 329 L400 341 L412 346 L400 351 L395 363 L390 351 L378 346 L390 341Z" opacity=".8"/>
+    <circle cx="390" cy="179" r="4" opacity=".8"/>
+    <circle cx="113" cy="345" r="4" opacity=".65"/>
+  </g>
+</svg>
