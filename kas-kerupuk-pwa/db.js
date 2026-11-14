@@ -302,21 +302,21 @@ const DB = (() => {
 
     /* Katalog untuk pembeli (tanpa HPP) dari get_catalog(). */
     async catalog() {
-      need();
+  if (!c) fail('Supabase belum terhubung.');
 
-      const { data, error } = await c.rpc('get_catalog');
-      if (error) fail(error);
+  const { data, error } = await c.rpc('get_catalog');
+  if (error) fail(error);
 
-      return (data || []).map(p => ({
-        id: p.id,
-        sku: p.sku,
-        name: p.name,
-        category: p.category,
-        weight_grams: Number(p.weight_grams) || 0,
-        selling_price: Number(p.selling_price) || 0,
-        stock: Number(p.stock) || 0
-      }));
-    },
+  return (data || []).map(p => ({
+    id: p.id,
+    sku: p.sku,
+    name: p.name,
+    category: p.category,
+    weight_grams: Number(p.weight_grams) || 0,
+    selling_price: Number(p.selling_price) || 0,
+    stock: Number(p.stock) || 0
+  }));
+},
 
     /*
       Checkout pembeli -> place_order().

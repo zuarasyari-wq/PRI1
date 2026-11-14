@@ -4509,9 +4509,15 @@ async function checkout(){
 /* ===================== RENDER ===================== */
 function render(){
   const y=window.scrollY;
-  const cust=isCust();
-  if(DB.needLogin)view='akun';
-  else if(cust&&!CUST_VIEWS.includes(view))view='shop';
+const cust=isCust();
+
+if(cust && !CUST_VIEWS.includes(view)){
+  view='shop';
+}else if(DB.needLogin && view==='myorders'){
+  view='akun';
+}else if(!DB.user && DB.on && !['shop','cart','akun'].includes(view)){
+  view='shop';
+}
   const pages={
     home,orders,products,prod,analysis,'prod-settings':prodSettings,more,add,akun,
     akuntansi:AUI.render,shop,cart,myorders
@@ -4519,12 +4525,37 @@ function render(){
   $('#app').innerHTML=(pages[view]||(cust?shop:home))();
   if(view==='prod')calc();
   if(view==='home'&&CB.length)showB(CB.length-1);
-  const nav=$('#nav');
-  nav.style.display=DB.needLogin?'none':'';
-  const items=cust
-    ?[['shop','box','Toko'],['cart','cart','Keranjang'+(cartCount()?' ('+cartCount()+')':'')],['myorders','receipt','Pesanan'],['akun','user','Akun']]
-    :[['home','home','Beranda'],['orders','cart','Pesanan'],['prod','fac','Produksi'],['add','wallet','Keuangan'],['more','menu','Lainnya']];
-  nav.innerHTML=items.map(([k,i,l])=>`<button class="${view===k?'on':''}" data-v="${k}" aria-label="${l}">${ic(i,22)}${l}</button>`).join('');
+  
+const nav=$('#nav');
+nav.style.display='';
+
+const guest=DB.needLogin;
+
+const items=guest
+  ?[
+    ['shop','box','Toko'],
+    ['cart','cart','Keranjang'],
+    ['akun','user','Akun']
+  ]
+  :cust
+    ?[
+      ['shop','box','Toko'],
+      ['cart','cart','Keranjang'+(cartCount()?' ('+cartCount()+')':'')],
+      ['myorders','receipt','Pesanan'],
+      ['akun','user','Akun']
+    ]
+    :[
+      ['home','home','Beranda'],
+      ['orders','cart','Pesanan'],
+      ['prod','fac','Produksi'],
+      ['add','wallet','Keuangan'],
+      ['more','menu','Lainnya']
+    ];
+
+nav.innerHTML=items.map(([k,i,l])=>
+  `<button class="${view===k?'on':''}" data-v="${k}" aria-label="${l}">${ic(i,22)}${l}</button>`
+).join('');
+
   window.scrollTo(0,y);
 }
 /* ===================== EVENT: CLICK ===================== */
